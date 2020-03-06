@@ -1,0 +1,7 @@
+spring:
+  datasource:
+    url: "jdbc:sqlserver://servidor01191093.database.windows.net:1433;database=BancoProjeto"
+    username: "Gf01191093@servidor01191093"
+    password: "#Gf49257832899"
+    initialization-mode: always
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
