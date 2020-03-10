@@ -2,13 +2,13 @@ package com.bandtec.gespospring.controller;
 
 import com.bandtec.gespospring.model.Usuario;
 import com.bandtec.gespospring.utils.AuthUser;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.Map;
 
+@RestController
+@RequestMapping("/user")
 public class UsuarioController {
 
     private Usuario usuario;
@@ -21,13 +21,12 @@ public class UsuarioController {
 
     @PostMapping("/login")
     public String login(
-            @RequestParam String email,
-            @RequestParam String senha
+            @RequestBody Map<String, String> body
     ){
-        String result = AuthUser.autenticate(email, senha);
+        String result = AuthUser.autenticate(body.get("email"), body.get("senha"));
 
         if(result.equals("Logado"))
-            usuario = new Usuario(email, senha, LocalDateTime.now());
+            usuario = new Usuario(body.get("email"), body.get("senha"), LocalDateTime.now());
 
         return result;
     }

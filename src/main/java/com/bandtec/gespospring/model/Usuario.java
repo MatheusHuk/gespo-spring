@@ -13,4 +13,12 @@ public class Usuario {
         this.senha = senha;
         this.autenticacao = autenticao;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public LocalDateTime getAutenticacao() {
+        return autenticacao;
+    }
 }
