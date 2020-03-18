@@ -4,7 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 
 @Entity
-public class Tasks {
+public class Tasks extends AbstractModel {
 
     private String title;
 
@@ -12,7 +12,6 @@ public class Tasks {
 
     private Integer deadline;
 
-    @Column(name = "percent_project")
     private Double percentProject;
 
     public Tasks() {}

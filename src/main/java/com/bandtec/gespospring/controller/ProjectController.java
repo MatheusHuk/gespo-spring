@@ -15,7 +15,7 @@ public class ProjectController {
     @Autowired
     ProjectRepository projectRepository;
 
-    @PostMapping("/cadastro")
+    @PostMapping("/create")
     public Project create(
             @RequestBody Project project
     ){

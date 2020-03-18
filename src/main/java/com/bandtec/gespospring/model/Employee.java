@@ -3,10 +3,10 @@ package com.bandtec.gespospring.model;
 import javax.persistence.*;
 import java.util.Date;
 
-@Entity // ISSO AQUI REFERENCIA A CLASSE COMO UMA TABELA DO BANCO
-public class EmployeeModel extends AbstractModel{
+@Entity
+public class Employee extends AbstractModel{
 
-    private String cpf; // ATRIBUTOS D BANCO
+    private String cpf;
 
     private String name;
 
@@ -16,19 +16,19 @@ public class EmployeeModel extends AbstractModel{
 
     private Double hourValue;
 
-    @Temporal(TemporalType.DATE) // ISSO AQUI DIZ QUE O ATRIBUTO É UMA DATA
+    @Temporal(TemporalType.DATE)
     private Date dtBirth;
 
-    public EmployeeModel() {} // ISSO AQUI É UM CONSTRUTOR
+    public Employee() {}
 
-    public EmployeeModel(String cpf, String name, String password, String email, Double hourValue, Date dtBirth) {
+    public Employee(String cpf, String name, String password, String email, Double hourValue, Date dtBirth) {
         this.cpf = cpf;
         this.name = name;
         this.password = password;
         this.email = email;
         this.hourValue = hourValue;
         this.dtBirth = dtBirth;
-    } // CONSTRUTOR SEGUNDARIO
+    }
 
     public String getCpf() {
         return cpf;

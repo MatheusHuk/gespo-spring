@@ -3,14 +3,14 @@ package com.bandtec.gespospring.model;
 import javax.persistence.Entity;
 
 @Entity
-public class CategoryModel extends AbstractModel {
+public class Category extends AbstractModel {
 
     private String dsCategory;
 
-    public CategoryModel() {
+    public Category() {
     }
 
-    public CategoryModel(String dsCategory){
+    public Category(String dsCategory){
         this.dsCategory = dsCategory;
     }
 

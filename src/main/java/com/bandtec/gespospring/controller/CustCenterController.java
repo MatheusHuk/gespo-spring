@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/cust-center")
 public class CustCenterController {
@@ -15,8 +17,10 @@ public class CustCenterController {
     @Autowired
     CustCenterRepository custCenterRepository;
 
-    @PostMapping("/cadastro")
-    public CustCenter create(
-        @RequestBody CustCenter custCenter
-    ) {return custCenterRepository.save(custCenter);}
+    @PostMapping("/create")
+    public List<CustCenter> create(
+        @RequestBody List<CustCenter> custCenter
+    ) {
+        return custCenterRepository.saveAll(custCenter);
+    }
 }

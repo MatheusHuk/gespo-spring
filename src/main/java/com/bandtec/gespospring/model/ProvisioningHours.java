@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 @Entity
 public class ProvisioningHours extends AbstractModel {
 
-    @Column(name = "amount_hours")
     private Integer amountHours;
 
     public ProvisioningHours() {}
