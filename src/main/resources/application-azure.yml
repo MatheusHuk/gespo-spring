@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: "jdbc:sqlserver://servidor01191093.database.windows.net:1433;database=BancoProjeto"
+    username: "Gf01191093"
+    password: "#Gf49257832899"
+    initialization-mode: always
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  jpa:
+    show-sql: true # Configuration to print the JPA query
+    hibernate:
+      physical-naming-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl # Configuration for conversion camelCase to snake_case.
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServer2008Dialect # Configuration for SQL SERVER dialect.

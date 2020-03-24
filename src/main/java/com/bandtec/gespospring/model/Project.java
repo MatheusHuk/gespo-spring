@@ -2,19 +2,21 @@ package com.bandtec.gespospring.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Project extends AbstractModel {
 
     private String name;
 
-    @Column(name = "ds_project")
     private String dsProject;
 
     private String manager;
 
-    @Column(name = "is_done")
     private Integer isDone;
+
+    @ManyToOne
+    private CustCenter custCenter;
 
     public Project() {}
 

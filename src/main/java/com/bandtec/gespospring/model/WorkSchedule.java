@@ -9,13 +9,10 @@ import java.util.Date;
 @Entity
 public class WorkSchedule extends AbstractModel {
 
-    @Column(name = "amount_hours")
     private Double amountHours;
 
-    @Column(name = "ds_work")
     private String dsWork;
 
-    @Column(name = "schedule_date")
     @Temporal(TemporalType.DATE)
     private Date scheduleDate;
 
