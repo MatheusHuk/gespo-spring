@@ -1,18 +1,15 @@
 spring:
   datasource:
-    url: "jdbc:h2:mem:testdb"
-    username: "sa"
-    password: "password"
+    url: "jdbc:sqlserver://gespodb.crbzjenbalzn.us-east-2.rds.amazonaws.com;databaseName=gespo"
+    port: 1433
+    username: "gespo"
+    password: "gespoadmin"
     initialization-mode: always
-    driver-class-name: org.h2.Driver
-  h2:
-    console:
-      enabled=true:
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
   jpa:
-    database-platform: org.hibernate.dialect.SQLServer2008Dialect
     show-sql: true # Configuration to print the JPA query
     hibernate:
       physical-naming-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl # Configuration for conversion camelCase to snake_case.
-#    properties:
-#      hibernate:
-#        dialect: org.hibernate.dialect.SQLServer2008Dialect # Configuration for SQL SERVER dialect.
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServer2008Dialect # Configuration for SQL SERVER dialect.
