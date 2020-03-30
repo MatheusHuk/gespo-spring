@@ -1,24 +1,15 @@
 package com.bandtec.gespospring.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.Entity;
 
 @Entity
-public class Category extends AbstractModel {
-
-    private String dsCategory;
-
-    public Category() {
-    }
-
-    public Category(String dsCategory){
-        this.dsCategory = dsCategory;
-    }
-
-    public String getDsCategory() {
-        return dsCategory;
-    }
-
-    public void setDsCategory(String dsCategory) {
-        this.dsCategory = dsCategory;
-    }
-}
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+public class Category extends AbstractModel { private String dsCategory; }
