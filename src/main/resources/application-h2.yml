@@ -13,6 +13,3 @@ spring:
     show-sql: true # Configuration to print the JPA query
     hibernate:
       physical-naming-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl # Configuration for conversion camelCase to snake_case.
-#    properties:
-#      hibernate:
-#        dialect: org.hibernate.dialect.SQLServer2008Dialect # Configuration for SQL SERVER dialect.
