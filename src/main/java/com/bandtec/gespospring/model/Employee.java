@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @NoArgsConstructor
@@ -23,5 +24,18 @@ public class Employee extends AbstractModel{
 
     @Temporal(TemporalType.DATE)
     private Date dtBirth;
+
+    @ManyToMany
+    private Set<Project> projects;
+
+    @ManyToOne
+    private Office office;
+
+    @ManyToOne
+    private Team team;
+
+    @ManyToOne
+    private Category category;
+
 
 }

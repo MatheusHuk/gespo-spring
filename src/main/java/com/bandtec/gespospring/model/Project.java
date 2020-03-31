@@ -5,9 +5,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import java.util.Set;
 
 @Entity
 @NoArgsConstructor
@@ -24,4 +25,6 @@ public class Project extends AbstractModel {
     @ManyToOne
     private CustCenter custCenter;
 
+    @ManyToMany(mappedBy = "projects")
+    private Set<Employee> employees;
 }

@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
 @Entity
 @NoArgsConstructor
@@ -20,4 +21,12 @@ public class Tasks extends AbstractModel {
     private Integer deadline;
     private Double percentProject;
 
+    @ManyToOne
+    private Project project;
+
+    @ManyToOne
+    private Employee employee;
+
+    @ManyToOne
+    private Category category;
 }
