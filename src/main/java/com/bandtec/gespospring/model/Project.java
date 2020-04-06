@@ -1,5 +1,6 @@
 package com.bandtec.gespospring.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,5 +29,6 @@ public class Project extends AbstractModel {
     private CustCenter custCenter;
 
     @ManyToMany(mappedBy = "projects")
+    @JsonIgnore
     private Set<Employee> employees;
 }
