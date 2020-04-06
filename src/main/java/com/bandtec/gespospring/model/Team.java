@@ -17,7 +17,4 @@ public class Team extends AbstractModel {
 
     private String name;
 
-    @ManyToOne
-    private Project project;
-
 }
