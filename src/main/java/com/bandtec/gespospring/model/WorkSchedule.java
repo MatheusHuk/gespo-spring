@@ -13,6 +13,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Getter
 @Setter
+@Table(name = "WORK_SCHEDULE")
 public class WorkSchedule extends AbstractModel {
 
     private Double amountHours;
@@ -22,8 +23,10 @@ public class WorkSchedule extends AbstractModel {
     private Date scheduleDate;
 
     @ManyToOne
+    @JoinColumn(name = "FK_PROJECT")
     private Project project;
 
     @ManyToOne
+    @JoinColumn(name = "FK_EMPLOYEE")
     private Employee employee;
 }

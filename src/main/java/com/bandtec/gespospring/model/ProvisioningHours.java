@@ -5,23 +5,24 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
+@Table(name = "PROVISIONING_HOURS")
 public class ProvisioningHours extends AbstractModel {
 
     private Integer amountHours;
 
     @ManyToOne
+    @JoinColumn(name = "FK_PROJECT")
     private Project project;
 
     @ManyToOne
+    @JoinColumn(name = "FK_EMPLOYEE")
     private Employee employee;
 
 }

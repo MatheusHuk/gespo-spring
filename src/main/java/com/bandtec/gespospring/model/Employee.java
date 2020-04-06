@@ -1,9 +1,6 @@
 package com.bandtec.gespospring.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -14,6 +11,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Getter
 @Setter
+@ToString
 public class Employee extends AbstractModel{
 
     private String cpf;
@@ -26,16 +24,22 @@ public class Employee extends AbstractModel{
     private Date dtBirth;
 
     @ManyToMany
+    @JoinColumn(name = "FK_PROJECT")
+    @JoinTable(name = "EMPLOYEES_PROJECTS",
+    joinColumns = @JoinColumn(name = "FK_EMPLOYEE"),
+    inverseJoinColumns = @JoinColumn(name = "FK_PROJECT"))
     private Set<Project> projects;
 
     @ManyToOne
-    private Office office;
-
-    @ManyToOne
+    @JoinColumn(name = "FK_TEAM")
     private Team team;
 
     @ManyToOne
+    @JoinColumn(name = "FK_CATEGORY")
     private Category category;
 
+    @ManyToOne()
+    @JoinColumn(name = "FK_PERMISSION")
+    private Permission permission;
 
 }
