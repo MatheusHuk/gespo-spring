@@ -1,6 +1,10 @@
 package com.bandtec.gespospring.model;
 
-import lombok.*;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -11,7 +15,6 @@ import java.util.Set;
 @AllArgsConstructor
 @Getter
 @Setter
-@ToString
 public class Employee extends AbstractModel{
 
     private String cpf;
@@ -19,6 +22,7 @@ public class Employee extends AbstractModel{
     private String password;
     private String email;
     private Double hourValue;
+    private String office;
 
     @Temporal(TemporalType.DATE)
     private Date dtBirth;
@@ -37,7 +41,7 @@ public class Employee extends AbstractModel{
     @JoinColumn(name = "FK_CATEGORY")
     private Category category;
 
-    @ManyToOne()
+    @ManyToOne
     @JoinColumn(name = "FK_PERMISSION")
     private Permission permission;
 
