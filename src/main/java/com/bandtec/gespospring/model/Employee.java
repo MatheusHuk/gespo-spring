@@ -24,7 +24,6 @@ public class Employee extends AbstractModel{
     private Date dtBirth;
 
     @ManyToMany
-    @JoinColumn(name = "FK_PROJECT")
     @JoinTable(name = "EMPLOYEES_PROJECTS",
     joinColumns = @JoinColumn(name = "FK_EMPLOYEE"),
     inverseJoinColumns = @JoinColumn(name = "FK_PROJECT"))
