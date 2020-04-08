@@ -24,11 +24,12 @@ public class EmployeeController {
 
     @GetMapping("/login")
     public ResponseEntity login(
-            @RequestBody LoginDto loginDto
+            @RequestParam(name = "cpf") String cpf,
+            @RequestParam(name = "password") String password
     ) {
-        if (loginDto.getPassword() == null || loginDto.getCpf() == null) return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        if (cpf == null || password == null) return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 
-        Employee user = employeeRepository.findByPasswordAndCpf(loginDto.getPassword(), loginDto.getCpf());
+        Employee user = employeeRepository.findByPasswordAndCpf(password, cpf);
 
         return user != null ? ResponseEntity.status(HttpStatus.OK).body(user) : ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
