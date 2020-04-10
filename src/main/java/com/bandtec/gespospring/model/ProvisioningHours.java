@@ -15,7 +15,7 @@ import javax.persistence.*;
 @Table(name = "PROVISIONING_HOURS")
 public class ProvisioningHours extends AbstractModel {
 
-    private Integer amountHours;
+    private Double amountHours;
 
     @ManyToOne
     @JoinColumn(name = "FK_PROJECT")

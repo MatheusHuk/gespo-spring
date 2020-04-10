@@ -5,8 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -14,7 +14,7 @@ import javax.persistence.ManyToOne;
 @AllArgsConstructor
 @Getter
 @Setter
-public class Tasks extends AbstractModel {
+public class Task extends AbstractModel {
 
     private String title;
     private String description;
@@ -22,11 +22,14 @@ public class Tasks extends AbstractModel {
     private Double percentProject;
 
     @ManyToOne
+    @JoinColumn(name = "FK_PROJECT")
     private Project project;
 
     @ManyToOne
+    @JoinColumn(name = "FK_ASSIGNEE")
     private Employee employee;
 
     @ManyToOne
+    @JoinColumn(name = "FK_CATEGORY")
     private Category category;
 }
