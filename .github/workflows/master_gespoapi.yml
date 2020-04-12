@@ -29,4 +29,4 @@ jobs:
         app-name: 'gespoapi'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_bbe9a340705845b38f643b2d7fc737d5 }}
-        package: '${{ github.workspace }}\target\deploy'
+        package: .
