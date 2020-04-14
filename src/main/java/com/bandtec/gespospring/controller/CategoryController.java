@@ -1,56 +1,52 @@
 package com.bandtec.gespospring.controller;
 
 import com.bandtec.gespospring.model.Category;
-import com.bandtec.gespospring.repository.CategoryRepository;
+import com.bandtec.gespospring.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/category")
+@RequestMapping("/categories")
 public class CategoryController {
 
     @Autowired
-    CategoryRepository categoryRepository;
+    private CategoryService categoryService;
 
-    @PostMapping("/create")
-    public Category create(
+    @PostMapping
+    public ResponseEntity create(
+            @RequestBody List<Category> categories
+    ){
+        categoryService.save(categories);
+
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
+    @GetMapping
+    public ResponseEntity read(
+            @RequestParam Integer id
+    ){
+        Category category = categoryService.findById(id);
+        return category != null ? ResponseEntity.status(HttpStatus.OK).body(category) :
+                ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    }
+
+    @PutMapping
+    public ResponseEntity update(
             @RequestBody Category category
-    ){
-        return categoryRepository.save(category);
-    }
-
-    @GetMapping("/search-all")
-    public List<Category> searchAll(){
-        return  categoryRepository.findAll();
-    }
-
-    @GetMapping("/search/{id}")
-    public Category searchById(
-            @RequestParam(name = "id") Integer id
-    ){
-        return  categoryRepository.findById(id).get();
-    }
-
-    @PutMapping("/update/{id}")
-    public Category updateCategory(
-            @RequestBody Category category,
-            @PathVariable Integer id
     ) {
-        return categoryRepository.findById(id).map(cat -> {
-            cat.setDsCategory(category.getDsCategory());
-            return categoryRepository.save(cat);
-        }).orElseGet(() -> {
-            category.setId(id);
-            return categoryRepository.save(category);
-        });
+        return categoryService.update(category) ? ResponseEntity.status(HttpStatus.OK).build() :
+                ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
-    @DeleteMapping("/delete")
-    public void delete(
-            @RequestParam(name = "id") Integer id
-    ){;
-        categoryRepository.deleteById(id);
+    @DeleteMapping
+    public ResponseEntity delete(
+            @RequestParam Integer id
+    ){
+        return categoryService.delete(id) ? ResponseEntity.status(HttpStatus.OK).build() :
+                ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 }
