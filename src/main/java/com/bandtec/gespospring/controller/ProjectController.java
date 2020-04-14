@@ -1,25 +1,52 @@
 package com.bandtec.gespospring.controller;
 
 import com.bandtec.gespospring.model.Project;
-import com.bandtec.gespospring.repository.ProjectRepository;
+import com.bandtec.gespospring.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
-@RequestMapping("/project")
+@RequestMapping("/projects")
 public class ProjectController {
 
     @Autowired
-    ProjectRepository projectRepository;
+    private ProjectService projectService;
 
-    @PostMapping("/create")
-    public Project create(
-            @RequestBody Project project
-    ){
-        return projectRepository.save(project);
+    @PostMapping
+    public ResponseEntity create(
+            @RequestBody List<Project> projects
+    ) {
+        projectService.save(projects);
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
+    @GetMapping
+    public ResponseEntity read(
+            @RequestParam Integer id
+    ) {
+        Project project = projectService.findById(id);
+        return project != null ? ResponseEntity.status(HttpStatus.OK).body(project) :
+                ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    }
+
+    @PutMapping
+    public ResponseEntity update(
+           @RequestBody Project project
+    ) {
+        return projectService.update(project) ? ResponseEntity.status(HttpStatus.OK).build() :
+                ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    }
+
+    @DeleteMapping
+    public ResponseEntity delete(
+            @RequestParam Integer id
+    ) {
+        return projectService.delete(id) ? ResponseEntity.status(HttpStatus.OK).build() :
+                ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
 }

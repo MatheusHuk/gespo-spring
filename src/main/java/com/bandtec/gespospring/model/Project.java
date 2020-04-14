@@ -22,7 +22,7 @@ public class Project extends AbstractModel {
     private String name;
     private String dsProject;
     private String manager;
-    private Integer isDone;
+    private Integer isDone = 0;
 
     @ManyToOne
     @JoinColumn(name = "FK_CUST_CENTER")
