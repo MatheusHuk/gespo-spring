@@ -23,7 +23,7 @@ public class SecurityServiceImpl implements SecurityService {
     private UserDetailsService userDetailsService;
 
     @Autowired
-    private  UserService userService;
+    private EmployeeService employeeService;
 
     private static final Logger logger = LoggerFactory.getLogger
             (SecurityServiceImpl.class);
@@ -40,7 +40,7 @@ public class SecurityServiceImpl implements SecurityService {
             logger.debug(String.format("Auto login %s successfully!", cpf));
             System.out.println("Usuário autênticado");
 
-            return userService.findByUsername(cpf);
+            return employeeService.findByCpf(cpf);
         }
 
         return null;
