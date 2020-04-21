@@ -22,7 +22,7 @@ public class CategoryController {
     ){
         categoryService.save(categories);
 
-        return ResponseEntity.status(HttpStatus.OK).build();
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @GetMapping
