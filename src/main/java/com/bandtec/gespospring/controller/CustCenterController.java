@@ -21,7 +21,7 @@ public class CustCenterController {
         @RequestBody List<CustCenter> custCenter
     ) {
         custCenterService.save(custCenter);
-        return ResponseEntity.status(HttpStatus.OK).build();
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @GetMapping

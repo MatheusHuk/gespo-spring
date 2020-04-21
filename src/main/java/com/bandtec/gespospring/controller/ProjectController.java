@@ -21,7 +21,7 @@ public class ProjectController {
             @RequestBody List<Project> projects
     ) {
         projectService.save(projects);
-        return ResponseEntity.status(HttpStatus.OK).build();
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @GetMapping
