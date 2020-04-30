@@ -1,6 +1,6 @@
 package com.bandtec.gespospring.service;
 
-import com.bandtec.gespospring.model.Category;
+import com.bandtec.gespospring.entity.Category;
 import com.bandtec.gespospring.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

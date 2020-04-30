@@ -1,6 +1,6 @@
 package com.bandtec.gespospring.controller;
 
-import com.bandtec.gespospring.model.CustCenter;
+import com.bandtec.gespospring.entity.CustCenter;
 import com.bandtec.gespospring.service.CustCenterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

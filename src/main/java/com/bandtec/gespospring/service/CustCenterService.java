@@ -1,6 +1,6 @@
 package com.bandtec.gespospring.service;
 
-import com.bandtec.gespospring.model.CustCenter;
+import com.bandtec.gespospring.entity.CustCenter;
 
 import java.util.List;
 

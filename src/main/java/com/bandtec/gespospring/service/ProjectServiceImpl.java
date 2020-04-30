@@ -1,6 +1,6 @@
 package com.bandtec.gespospring.service;
 
-import com.bandtec.gespospring.model.Project;
+import com.bandtec.gespospring.entity.Project;
 import com.bandtec.gespospring.repository.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

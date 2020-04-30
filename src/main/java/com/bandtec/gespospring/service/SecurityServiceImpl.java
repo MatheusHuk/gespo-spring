@@ -1,6 +1,6 @@
 package com.bandtec.gespospring.service;
 
-import com.bandtec.gespospring.model.Employee;
+import com.bandtec.gespospring.model.EmployeeModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +29,7 @@ public class SecurityServiceImpl implements SecurityService {
             (SecurityServiceImpl.class);
 
     @Override
-    public Employee autoLogin(String cpf, String password) {
+    public EmployeeModel autoLogin(String cpf, String password) {
         UserDetails userDetails = userDetailsService.loadUserByUsername(cpf);
         UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(userDetails, password, userDetails.getAuthorities());
 
