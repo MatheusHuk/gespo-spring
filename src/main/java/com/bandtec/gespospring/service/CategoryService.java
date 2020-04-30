@@ -1,7 +1,7 @@
 package com.bandtec.gespospring.service;
 
 
-import com.bandtec.gespospring.model.Category;
+import com.bandtec.gespospring.entity.Category;
 
 import java.util.List;
 

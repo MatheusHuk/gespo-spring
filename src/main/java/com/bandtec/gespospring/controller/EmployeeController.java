@@ -1,6 +1,7 @@
 package com.bandtec.gespospring.controller;
 
-import com.bandtec.gespospring.model.Employee;
+import com.bandtec.gespospring.entity.Employee;
+import com.bandtec.gespospring.model.EmployeeModel;
 import com.bandtec.gespospring.service.SecurityService;
 import com.bandtec.gespospring.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +39,7 @@ public class EmployeeController {
         if (cpf == null || password == null)
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 
-        Employee user = securityService.autoLogin(cpf, password);
+        EmployeeModel user = securityService.autoLogin(cpf, password);
 
         return user != null ? ResponseEntity.status(HttpStatus.OK).body(user) :
                 ResponseEntity.status(HttpStatus.NOT_FOUND).build();

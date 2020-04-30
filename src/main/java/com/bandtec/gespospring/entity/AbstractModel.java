@@ -1,4 +1,4 @@
-package com.bandtec.gespospring.model;
+package com.bandtec.gespospring.entity;
 
 import lombok.Getter;
 import lombok.Setter;

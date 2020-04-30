@@ -1,6 +1,6 @@
 package com.bandtec.gespospring.service;
 
-import com.bandtec.gespospring.model.CustCenter;
+import com.bandtec.gespospring.entity.CustCenter;
 import com.bandtec.gespospring.repository.CustCenterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

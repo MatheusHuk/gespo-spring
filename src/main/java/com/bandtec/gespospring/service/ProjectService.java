@@ -1,6 +1,6 @@
 package com.bandtec.gespospring.service;
 
-import com.bandtec.gespospring.model.Project;
+import com.bandtec.gespospring.entity.Project;
 
 import java.util.List;
 

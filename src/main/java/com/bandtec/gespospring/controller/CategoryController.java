@@ -1,6 +1,6 @@
 package com.bandtec.gespospring.controller;
 
-import com.bandtec.gespospring.model.Category;
+import com.bandtec.gespospring.entity.Category;
 import com.bandtec.gespospring.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

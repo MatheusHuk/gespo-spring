@@ -1,6 +1,6 @@
 package com.bandtec.gespospring.controller;
 
-import com.bandtec.gespospring.model.Project;
+import com.bandtec.gespospring.entity.Project;
 import com.bandtec.gespospring.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

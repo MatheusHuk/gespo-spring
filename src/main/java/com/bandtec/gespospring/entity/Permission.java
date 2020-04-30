@@ -1,4 +1,4 @@
-package com.bandtec.gespospring.model;
+package com.bandtec.gespospring.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,4 +12,4 @@ import javax.persistence.Entity;
 @AllArgsConstructor
 @Getter
 @Setter
-public class Category extends AbstractModel { private String dsCategory; }
+public class Permission extends AbstractModel { private String dsPermission; }
