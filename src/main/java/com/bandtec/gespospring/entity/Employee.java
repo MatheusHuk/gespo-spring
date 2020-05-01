@@ -1,6 +1,7 @@
 package com.bandtec.gespospring.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,12 +28,6 @@ public class Employee extends AbstractModel{
     @Temporal(TemporalType.DATE)
     private Date dtBirth;
 
-    @ManyToMany
-    @JoinTable(name = "EMPLOYEES_PROJECTS",
-    joinColumns = @JoinColumn(name = "FK_EMPLOYEE"),
-    inverseJoinColumns = @JoinColumn(name = "FK_PROJECT"))
-    private Set<Project> projects;
-
     @ManyToOne
     @JoinColumn(name = "FK_TEAM")
     private Team team;
@@ -44,5 +39,9 @@ public class Employee extends AbstractModel{
     @ManyToOne
     @JoinColumn(name = "FK_PERMISSION")
     private Permission permission;
+
+    @OneToMany(mappedBy = "employee")
+    @JsonIgnore
+    Set<EmployeesProjects> employeesProjects;
 
 }

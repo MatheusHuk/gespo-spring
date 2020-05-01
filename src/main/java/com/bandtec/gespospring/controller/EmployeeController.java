@@ -22,15 +22,6 @@ public class EmployeeController {
     @Autowired
     private SecurityService securityService;
 
-    @PostMapping
-    public ResponseEntity create(
-            @RequestBody List<Employee> employees
-    ) {
-        employeeService.save(employees);
-
-        return ResponseEntity.status(HttpStatus.CREATED).build();
-    }
-
     @GetMapping("/login")
     public ResponseEntity login(
             @RequestParam String cpf,
@@ -43,6 +34,15 @@ public class EmployeeController {
 
         return user != null ? ResponseEntity.status(HttpStatus.OK).body(user) :
                 ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    }
+
+    @PostMapping("/registration")
+    public ResponseEntity create(
+            @RequestBody List<Employee> employees
+    ) {
+        employeeService.save(employees);
+
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @GetMapping

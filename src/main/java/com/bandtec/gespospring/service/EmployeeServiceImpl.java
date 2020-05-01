@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Transactional
@@ -51,7 +52,7 @@ public class EmployeeServiceImpl implements EmployeeService {
             emp.setHourValue(employee.getHourValue());
             emp.setOffice(employee.getOffice());
             emp.setDtBirth(employee.getDtBirth());
-            emp.setProjects(employee.getProjects());
+            emp.setEmployeesProjects(employee.getEmployeesProjects());
             emp.setTeam(employee.getTeam());
             emp.setCategory(employee.getCategory());
             emp.setPermission(employee.getPermission());
