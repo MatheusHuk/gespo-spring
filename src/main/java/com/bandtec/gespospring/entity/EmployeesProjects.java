@@ -8,21 +8,18 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
-@Table(name = "WORK_SCHEDULE")
-public class WorkSchedule extends AbstractModel {
-
-    private Double amountHours;
-    private String dsWork;
-
-    @ManyToOne
-    @JoinColumn(name = "FK_PROJECT")
-    private Project project;
+public class EmployeesProjects extends AbstractModel {
 
     @ManyToOne
     @JoinColumn(name = "FK_EMPLOYEE")
-    private Employee employee;
+    Employee employee;
+
+    @ManyToOne
+    @JoinColumn(name = "FK_PROJECT")
+    Project project;
+
 }
