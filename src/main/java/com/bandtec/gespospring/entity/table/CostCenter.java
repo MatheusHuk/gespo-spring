@@ -14,8 +14,8 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @Getter
 @Setter
-@Table(name = "CUST_CENTER")
-public class CustCenter extends AbstractModel {
+@Table(name = "COST_CENTER")
+public class CostCenter extends AbstractModel {
 
     private String cnpj;
     private String name;

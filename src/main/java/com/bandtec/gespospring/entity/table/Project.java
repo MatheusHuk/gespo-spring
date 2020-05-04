@@ -23,7 +23,7 @@ public class Project extends AbstractModel {
 
     @ManyToOne
     @JoinColumn(name = "FK_CUST_CENTER")
-    private CustCenter custCenter;
+    private CostCenter costCenter;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "EMPLOYEES_PROJECTS",

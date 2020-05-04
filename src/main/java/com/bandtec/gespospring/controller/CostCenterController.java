@@ -1,6 +1,6 @@
 package com.bandtec.gespospring.controller;
 
-import com.bandtec.gespospring.entity.table.CustCenter;
+import com.bandtec.gespospring.entity.table.CostCenter;
 import com.bandtec.gespospring.service.CostCenter.CostCenterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,7 +18,7 @@ public class CostCenterController {
 
     @PostMapping
     public ResponseEntity create(
-        @RequestBody List<CustCenter> costCenter
+        @RequestBody List<CostCenter> costCenter
     ) {
         costCenterService.save(costCenter);
         return ResponseEntity.status(HttpStatus.CREATED).build();
@@ -28,22 +28,25 @@ public class CostCenterController {
     public ResponseEntity read(
             @RequestParam Integer id
     ) {
-        CustCenter custCenter = costCenterService.findById(id);
+        CostCenter costCenter = costCenterService.findById(id);
 
-        return custCenter != null ?  ResponseEntity.status(HttpStatus.OK).body(custCenter) : ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        return costCenter != null ?  ResponseEntity.status(HttpStatus.OK).body(costCenter) :
+                ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
     @PutMapping
     public ResponseEntity update(
-            @RequestBody CustCenter custCenter
+            @RequestBody CostCenter costCenter
     ) {
-        return costCenterService.update(custCenter) ? ResponseEntity.status(HttpStatus.OK).build() : ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        return costCenterService.update(costCenter) ? ResponseEntity.status(HttpStatus.OK).build() :
+                ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
     @DeleteMapping
     public ResponseEntity delete(
             @RequestParam Integer id
     ) {
-        return costCenterService.delete(id) ? ResponseEntity.status(HttpStatus.OK).build() : ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        return costCenterService.delete(id) ? ResponseEntity.status(HttpStatus.OK).build() :
+                ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 }
