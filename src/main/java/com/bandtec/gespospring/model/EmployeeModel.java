@@ -1,14 +1,12 @@
 package com.bandtec.gespospring.model;
 
-import com.bandtec.gespospring.entity.Employee;
-import com.bandtec.gespospring.entity.Permission;
-import lombok.AllArgsConstructor;
+import com.bandtec.gespospring.entity.table.Employee;
+import com.bandtec.gespospring.entity.table.Permission;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-@AllArgsConstructor
 public class EmployeeModel {
 
     public EmployeeModel(Employee employee) {

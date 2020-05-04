@@ -1,9 +1,9 @@
 package com.bandtec.gespospring.controller;
 
-import com.bandtec.gespospring.entity.Employee;
+import com.bandtec.gespospring.entity.table.Employee;
 import com.bandtec.gespospring.model.EmployeeModel;
-import com.bandtec.gespospring.service.SecurityService;
-import com.bandtec.gespospring.service.EmployeeService;
+import com.bandtec.gespospring.service.Security.SecurityService;
+import com.bandtec.gespospring.service.Employee.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

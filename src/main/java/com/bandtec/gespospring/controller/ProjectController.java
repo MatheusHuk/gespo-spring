@@ -1,13 +1,15 @@
 package com.bandtec.gespospring.controller;
 
-import com.bandtec.gespospring.entity.Project;
-import com.bandtec.gespospring.service.ProjectService;
+import com.bandtec.gespospring.entity.table.Project;
+import com.bandtec.gespospring.entity.view.VwSimpleProject;
+import com.bandtec.gespospring.service.Project.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/projects")
@@ -47,6 +49,16 @@ public class ProjectController {
     ) {
         return projectService.delete(id) ? ResponseEntity.status(HttpStatus.OK).build() :
                 ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    }
+
+    @GetMapping("/employee")
+    public ResponseEntity findByEmployee(
+            @RequestParam Integer id
+    ) {
+        Set<VwSimpleProject> projects = projectService.findByEmployee(id);
+
+        return !projects.isEmpty() ? ResponseEntity.status(HttpStatus.OK).body(projects) :
+                ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
 }
