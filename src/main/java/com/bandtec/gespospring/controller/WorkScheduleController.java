@@ -1,7 +1,8 @@
 package com.bandtec.gespospring.controller;
 
-import com.bandtec.gespospring.entity.WorkSchedule;
-import com.bandtec.gespospring.service.WorkScheduleService;
+import com.bandtec.gespospring.entity.table.WorkSchedule;
+import com.bandtec.gespospring.model.WorkScheduleModel;
+import com.bandtec.gespospring.service.WorkSchedule.WorkScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -53,7 +54,7 @@ public class WorkScheduleController {
     public ResponseEntity readByEmployee(
             @RequestParam Integer id
     ) {
-        List<WorkSchedule> workSchedulesByEmployee = workScheduleService.findByEmployee(id);
+        List<WorkScheduleModel> workSchedulesByEmployee = workScheduleService.findByEmployee(id);
 
         return !workSchedulesByEmployee.isEmpty() ? ResponseEntity.status(HttpStatus.OK).body(workSchedulesByEmployee) :
                 ResponseEntity.status(HttpStatus.NO_CONTENT).build();
