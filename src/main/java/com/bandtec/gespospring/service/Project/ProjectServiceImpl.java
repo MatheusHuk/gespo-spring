@@ -39,7 +39,7 @@ public class ProjectServiceImpl implements ProjectService{
             proj.setDsProject(project.getDsProject());
             proj.setManager(project.getManager());
             proj.setIsDone(project.getIsDone());
-            proj.setCustCenter(project.getCustCenter());
+            proj.setCostCenter(project.getCostCenter());
             proj.setEmployees(project.getEmployees());
 
             projectRepository.save(proj);

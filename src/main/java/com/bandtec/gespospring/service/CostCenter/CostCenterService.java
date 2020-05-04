@@ -1,12 +1,12 @@
 package com.bandtec.gespospring.service.CostCenter;
 
-import com.bandtec.gespospring.entity.table.CustCenter;
+import com.bandtec.gespospring.entity.table.CostCenter;
 
 import java.util.List;
 
 public interface CostCenterService {
-    void save(List<CustCenter> costCenters);
-    CustCenter findById(Integer id);
-    Boolean update(CustCenter custCenter);
+    void save(List<CostCenter> costCenters);
+    CostCenter findById(Integer id);
+    Boolean update(CostCenter costCenter);
     Boolean delete(Integer id);
 }

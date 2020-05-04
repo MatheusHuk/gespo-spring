@@ -58,14 +58,16 @@ public class EmployeeController {
     public ResponseEntity delete(
             @RequestParam Integer id
     ) {
-        return employeeService.delete(id) ? ResponseEntity.status(HttpStatus.OK).build() : ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        return employeeService.delete(id) ? ResponseEntity.status(HttpStatus.OK).build() :
+                ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
     @PutMapping
     public ResponseEntity update(
             @RequestBody Employee employee
     ) {
-        return employeeService.update(employee) ? ResponseEntity.status(HttpStatus.OK).build() : ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        return employeeService.update(employee) ? ResponseEntity.status(HttpStatus.OK).build() :
+                ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
 }
