@@ -11,4 +11,5 @@ public interface WorkScheduleService {
     Boolean update(WorkSchedule workSchedule);
     Boolean delete(Integer id);
     List<WorkScheduleModel> findByEmployee(Integer id);
+    List<WorkScheduleModel> findByFilter(WorkSchedule workSchedule);
 }

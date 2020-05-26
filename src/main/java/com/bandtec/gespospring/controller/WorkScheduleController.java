@@ -53,11 +53,30 @@ public class WorkScheduleController {
 
     @GetMapping("/employee")
     public ResponseEntity readByEmployee(
-            @RequestParam Integer id
+            @RequestParam Integer employeeId
     ) {
-        List<WorkScheduleModel> workSchedulesByEmployee = workScheduleService.findByEmployee(id);
+        List<WorkScheduleModel> workSchedulesByEmployee = workScheduleService.findByEmployee(employeeId);
 
-        return !workSchedulesByEmployee.isEmpty() ? ResponseEntity.status(HttpStatus.OK).body(workSchedulesByEmployee) :
-                ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        return workSchedulesByEmployee.isEmpty() ? ResponseEntity.status(HttpStatus.NO_CONTENT).build() :
+                ResponseEntity.status(HttpStatus.OK).body(workSchedulesByEmployee);
+
+    }
+
+    @GetMapping("/filter")
+    public ResponseEntity readByFilter(
+            @RequestParam(required = false) Integer projectId,
+            @RequestParam(required = false) Integer employeeId,
+            @RequestParam(required = false) String date
+    ) {
+        if(projectId == null && employeeId == null && date == null){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+
+        WorkSchedule workSchedule = new WorkSchedule(projectId, employeeId, date);
+        List<WorkScheduleModel> workScheduleModels = workScheduleService.findByFilter(workSchedule);
+
+        return workScheduleModels.isEmpty() ? ResponseEntity.status(HttpStatus.NO_CONTENT).build() :
+                ResponseEntity.status(HttpStatus.OK).body(workScheduleModels);
+
     }
 }

@@ -3,10 +3,13 @@ package com.bandtec.gespospring.service.WorkSchedule;
 import com.bandtec.gespospring.entity.table.WorkSchedule;
 import com.bandtec.gespospring.model.WorkScheduleModel;
 import com.bandtec.gespospring.repository.WorkScheduleRepository;
+import org.hibernate.jdbc.Work;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Transactional
@@ -51,5 +54,22 @@ public class WorkScheduleServiceImpl implements WorkScheduleService {
     @Override
     public List<WorkScheduleModel> findByEmployee(Integer id) {
         return workScheduleRepository.findByEmployeeId(id);
+    }
+
+    @Override
+    public List<WorkScheduleModel> findByFilter(WorkSchedule workSchedule) {
+        List<WorkSchedule> workScheduleList = workScheduleRepository.findAll(Example.of(workSchedule));
+        List<WorkScheduleModel> workScheduleModels = new ArrayList<>();
+
+        if (workScheduleList.isEmpty()) {
+            return workScheduleModels;
+        }
+
+        for (WorkSchedule wor :
+                workScheduleList) {
+            workScheduleModels.add(new WorkScheduleModel(wor));
+        }
+
+        return workScheduleModels;
     }
 }
