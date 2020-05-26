@@ -12,29 +12,30 @@ import java.util.Date;
 @Setter
 public class WorkScheduleModel {
 
-    public WorkScheduleModel(WorkSchedule workSchedule) {
-        Employee emp = new Employee();
-        Project pro = new Project();
-
-        emp.setId(workSchedule.getEmployee().getId());
-        emp.setName(workSchedule.getEmployee().getName());
-
-        pro.setId(workSchedule.getProject().getId());
-        pro.setName(workSchedule.getProject().getName());
-
-        this.id = workSchedule.getId();
-        this.creationDate = workSchedule.getCreationDate();
-        this.amountHours = workSchedule.getAmountHours();
-        this.dsWork = workSchedule.getDsWork();
-        this.employee =  emp;
-        this.project = pro;
-    }
-
     private Integer id;
     private Date creationDate;
     private Double amountHours;
     private String dsWork;
     private Employee employee;
     private Project project;
+
+    public WorkScheduleModel(WorkSchedule workSchedule) {
+        Employee employee = new Employee();
+        Project project = new Project();
+
+        employee.setId(workSchedule.getEmployee().getId());
+        employee.setName(workSchedule.getEmployee().getName());
+
+        project.setId(workSchedule.getProject().getId());
+        project.setName(workSchedule.getProject().getName());
+
+        this.id = workSchedule.getId();
+        this.creationDate = workSchedule.getCreationDate();
+        this.amountHours = workSchedule.getAmountHours();
+        this.dsWork = workSchedule.getDsWork();
+        this.employee =  employee;
+        this.project = project;
+    }
+
 
 }
