@@ -1,19 +1,16 @@
 package com.bandtec.gespospring.entity.table;
 
 import com.bandtec.gespospring.entity.AbstractModel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Set;
 
-@Entity
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
 public class Project extends AbstractModel {
 
     private String name;

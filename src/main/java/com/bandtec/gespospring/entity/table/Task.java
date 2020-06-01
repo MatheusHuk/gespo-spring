@@ -1,20 +1,17 @@
 package com.bandtec.gespospring.entity.table;
 
 import com.bandtec.gespospring.entity.AbstractModel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-@Entity
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
 public class Task extends AbstractModel {
 
     private String title;

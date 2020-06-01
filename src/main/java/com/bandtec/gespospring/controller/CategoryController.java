@@ -28,11 +28,11 @@ public class CategoryController {
 
     @GetMapping
     public ResponseEntity read(
-            @RequestParam Integer id
+            @RequestParam(required = false) Integer id
     ){
-        Category category = categoryService.findById(id);
-        return category != null ? ResponseEntity.status(HttpStatus.OK).body(category) :
-                ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        List<Category> category = categoryService.find(id);
+        return category.isEmpty() ? ResponseEntity.status(HttpStatus.NO_CONTENT).build() :
+                ResponseEntity.status(HttpStatus.OK).body(category);
     }
 
     @PutMapping

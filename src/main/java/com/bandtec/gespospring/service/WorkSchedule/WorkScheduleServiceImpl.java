@@ -3,7 +3,6 @@ package com.bandtec.gespospring.service.WorkSchedule;
 import com.bandtec.gespospring.entity.table.WorkSchedule;
 import com.bandtec.gespospring.model.WorkScheduleModel;
 import com.bandtec.gespospring.repository.WorkScheduleRepository;
-import org.hibernate.jdbc.Work;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
@@ -35,7 +34,6 @@ public class WorkScheduleServiceImpl implements WorkScheduleService {
         return workScheduleRepository.findById(workSchedule.getId()).map( wks -> {
             wks.setAmountHours(workSchedule.getAmountHours());
             wks.setDsWork(workSchedule.getDsWork());
-            wks.setEmployee(workSchedule.getEmployee());
             wks.setProject(workSchedule.getProject());
             workScheduleRepository.save(wks);
 

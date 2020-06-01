@@ -1,25 +1,21 @@
 package com.bandtec.gespospring.entity.table;
 
 import com.bandtec.gespospring.entity.AbstractModel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-import javax.persistence.*;
-import java.sql.Timestamp;
-import java.text.DateFormat;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.Date;
-import java.util.Locale;
 
-@Entity
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
 @Table(name = "WORK_SCHEDULE")
 public class WorkSchedule extends AbstractModel {
 
@@ -35,11 +31,11 @@ public class WorkSchedule extends AbstractModel {
     private Employee employee;
 
     public WorkSchedule(Integer projectId, Integer employeeId, String date) {
-        Project project = new Project();
-        Employee employee = new Employee();
+        this.project = new Project();
+        this.employee = new Employee();
 
-        project.setId(projectId);
-        employee.setId(employeeId);
+        this.project.setId(projectId);
+        this.employee.setId(employeeId);
 
         try {
             if(date != null) {
@@ -49,6 +45,5 @@ public class WorkSchedule extends AbstractModel {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-
     }
 }

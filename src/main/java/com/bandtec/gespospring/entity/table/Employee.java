@@ -3,20 +3,17 @@ package com.bandtec.gespospring.entity.table;
 
 import com.bandtec.gespospring.entity.AbstractModel;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
 
-@Entity
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
 public class Employee extends AbstractModel {
 
     private String cpf;

@@ -9,16 +9,15 @@ import lombok.Setter;
 @Setter
 public class EmployeeModel {
 
+    private Integer id;
+    private String cpf;
+    private String name;
+    private Permission permission;
+
     public EmployeeModel(Employee employee) {
         this.id = employee.getId();
         this.cpf = employee.getCpf();
         this.name = employee.getName();
         this.permission = employee.getPermission();
     }
-
-    private Integer id;
-    private String cpf;
-    private String name;
-    private Permission permission;
-
 }
