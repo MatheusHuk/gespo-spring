@@ -1,16 +1,13 @@
 package com.bandtec.gespospring.entity.table;
 
 import com.bandtec.gespospring.entity.AbstractModel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Entity;
 
-@Entity
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
 public class Team extends AbstractModel { private String name; }

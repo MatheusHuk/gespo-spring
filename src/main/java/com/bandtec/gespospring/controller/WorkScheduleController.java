@@ -59,24 +59,18 @@ public class WorkScheduleController {
 
         return workSchedulesByEmployee.isEmpty() ? ResponseEntity.status(HttpStatus.NO_CONTENT).build() :
                 ResponseEntity.status(HttpStatus.OK).body(workSchedulesByEmployee);
-
     }
 
     @GetMapping("/filter")
     public ResponseEntity readByFilter(
-            @RequestParam(required = false) Integer projectId,
+            @RequestParam Integer projectId,
             @RequestParam(required = false) Integer employeeId,
             @RequestParam(required = false) String date
     ) {
-        if(projectId == null && employeeId == null && date == null){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-        }
-
         WorkSchedule workSchedule = new WorkSchedule(projectId, employeeId, date);
         List<WorkScheduleModel> workScheduleModels = workScheduleService.findByFilter(workSchedule);
 
         return workScheduleModels.isEmpty() ? ResponseEntity.status(HttpStatus.NO_CONTENT).build() :
                 ResponseEntity.status(HttpStatus.OK).body(workScheduleModels);
-
     }
 }

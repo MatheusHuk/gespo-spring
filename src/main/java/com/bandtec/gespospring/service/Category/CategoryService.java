@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface CategoryService {
     void save(List<Category> categories);
-    Category findById(Integer id);
+    List<Category> find(Integer id);
     Boolean update(Category categories);
     Boolean delete(Integer id);
 }

@@ -37,5 +37,4 @@ public class WorkScheduleModel {
         this.project = project;
     }
 
-
 }
