@@ -1,4 +1,4 @@
-package com.bandtec.gespospring.model;
+package com.bandtec.gespospring.DTO;
 
 import com.bandtec.gespospring.entity.table.Employee;
 import com.bandtec.gespospring.entity.table.Project;
@@ -10,7 +10,7 @@ import java.util.Date;
 
 @Getter
 @Setter
-public class WorkScheduleModel {
+public class WorkScheduleDTO {
 
     private Integer id;
     private Date creationDate;
@@ -19,7 +19,7 @@ public class WorkScheduleModel {
     private Employee employee;
     private Project project;
 
-    public WorkScheduleModel(WorkSchedule workSchedule) {
+    public WorkScheduleDTO(WorkSchedule workSchedule) {
         Employee employee = new Employee();
         Project project = new Project();
 
@@ -28,6 +28,7 @@ public class WorkScheduleModel {
 
         project.setId(workSchedule.getProject().getId());
         project.setName(workSchedule.getProject().getName());
+        project.setIsDone(workSchedule.getProject().getIsDone());
 
         this.id = workSchedule.getId();
         this.creationDate = workSchedule.getCreationDate();

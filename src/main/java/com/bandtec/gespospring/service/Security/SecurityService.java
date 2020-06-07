@@ -1,7 +1,7 @@
 package com.bandtec.gespospring.service.Security;
 
-import com.bandtec.gespospring.model.EmployeeModel;
+import com.bandtec.gespospring.DTO.EmployeeDTO;
 
 public interface SecurityService {
-    EmployeeModel autoLogin(String cpf, String password);
+    EmployeeDTO autoLogin(String cpf, String password);
 }

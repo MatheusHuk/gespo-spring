@@ -2,7 +2,7 @@ package com.bandtec.gespospring.controller;
 
 import com.bandtec.gespospring.entity.table.ProvisioningHours;
 import com.bandtec.gespospring.entity.view.VwProvisioningHours;
-import com.bandtec.gespospring.model.VwProvisioningHoursModel;
+import com.bandtec.gespospring.DTO.VwProvisioningHoursDTO;
 import com.bandtec.gespospring.service.ProvisioningHours.ProvisioningHoursService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
 @RestController
 @RequestMapping("/provisioning-hours")
 public class ProvisioningHoursController {
@@ -69,7 +70,7 @@ public class ProvisioningHoursController {
         VwProvisioningHours provisioningHoursMouth = new VwProvisioningHours(projectId, employeeId,
                 categoryId, month);
 
-         List<VwProvisioningHoursModel> provisioningHoursModels = provisioningHoursService.findByFilter(provisioningHoursMouth);
+         List<VwProvisioningHoursDTO> provisioningHoursModels = provisioningHoursService.findByFilter(provisioningHoursMouth);
 
          return provisioningHoursModels.isEmpty() ? ResponseEntity.status(HttpStatus.NO_CONTENT).build() :
                  ResponseEntity.status(HttpStatus.OK).body(provisioningHoursModels);

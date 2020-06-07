@@ -1,9 +1,8 @@
 package com.bandtec.gespospring.service.ProvisioningHours;
 
 import com.bandtec.gespospring.entity.table.ProvisioningHours;
-import com.bandtec.gespospring.entity.table.WorkSchedule;
 import com.bandtec.gespospring.entity.view.VwProvisioningHours;
-import com.bandtec.gespospring.model.VwProvisioningHoursModel;
+import com.bandtec.gespospring.DTO.VwProvisioningHoursDTO;
 import com.bandtec.gespospring.repository.ProvisioningHoursRepository;
 import com.bandtec.gespospring.repository.VwProvisioningHoursRepository;
 import org.springframework.data.domain.Example;
@@ -56,11 +55,11 @@ public class ProvisioningHoursServiceImpl implements ProvisioningHoursService{
     }
 
     @Override
-    public List<VwProvisioningHoursModel> findByFilter(VwProvisioningHours provisioningHoursMouth) {
+    public List<VwProvisioningHoursDTO> findByFilter(VwProvisioningHours provisioningHoursMouth) {
         List<VwProvisioningHours> provisioningHoursList = provisioningHoursMouthRepository
                 .findAll(Example.of(provisioningHoursMouth));
 
-        List<VwProvisioningHoursModel> provisioningHoursModels = new ArrayList<>();
+        List<VwProvisioningHoursDTO> provisioningHoursModels = new ArrayList<>();
 
         if (provisioningHoursList.isEmpty()) {
             return provisioningHoursModels;
@@ -68,7 +67,7 @@ public class ProvisioningHoursServiceImpl implements ProvisioningHoursService{
 
         for (VwProvisioningHours prov :
                 provisioningHoursList) {
-            provisioningHoursModels.add(new VwProvisioningHoursModel(prov));
+            provisioningHoursModels.add(new VwProvisioningHoursDTO(prov));
         }
 
         return provisioningHoursModels;
