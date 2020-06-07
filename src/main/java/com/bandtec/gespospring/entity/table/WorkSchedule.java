@@ -34,6 +34,7 @@ public class WorkSchedule extends AbstractModel {
         this.project = new Project();
         this.employee = new Employee();
 
+        this.project.setIsDone(null);
         this.project.setId(projectId);
         this.employee.setId(employeeId);
 

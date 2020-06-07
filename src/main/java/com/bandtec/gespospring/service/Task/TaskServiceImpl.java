@@ -27,7 +27,14 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public Boolean update(Task task) {
-        return null;
+        return taskRepository.findById(task.getId()).map( tas -> {
+            tas.setCategory(task.getCategory());
+            tas.setDescription(task.getDescription());
+            tas.setTitle(task.getTitle());
+            tas.setPercentProject(task.getPercentProject());
+            tas.setDeadline(task.getDeadline());
+            return true;
+        }).orElse( null);
     }
 
     @Override

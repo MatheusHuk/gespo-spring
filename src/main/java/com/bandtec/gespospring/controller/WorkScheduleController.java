@@ -1,13 +1,15 @@
 package com.bandtec.gespospring.controller;
 
+import com.bandtec.gespospring.DTO.update.WorkScheduleUpdateDTO;
 import com.bandtec.gespospring.entity.table.WorkSchedule;
-import com.bandtec.gespospring.model.WorkScheduleModel;
+import com.bandtec.gespospring.DTO.WorkScheduleDTO;
 import com.bandtec.gespospring.service.WorkSchedule.WorkScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
@@ -38,8 +40,8 @@ public class WorkScheduleController {
     }
 
     @PutMapping ResponseEntity update(
-            @RequestBody WorkSchedule workSchedule
-    ) {
+            @RequestBody @Valid WorkScheduleUpdateDTO workSchedule
+            ) {
         return workScheduleService.update(workSchedule) ? ResponseEntity.status(HttpStatus.OK).build() :
                 ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
@@ -55,7 +57,7 @@ public class WorkScheduleController {
     public ResponseEntity readByEmployee(
             @RequestParam Integer employeeId
     ) {
-        List<WorkScheduleModel> workSchedulesByEmployee = workScheduleService.findByEmployee(employeeId);
+        List<WorkScheduleDTO> workSchedulesByEmployee = workScheduleService.findByEmployee(employeeId);
 
         return workSchedulesByEmployee.isEmpty() ? ResponseEntity.status(HttpStatus.NO_CONTENT).build() :
                 ResponseEntity.status(HttpStatus.OK).body(workSchedulesByEmployee);
@@ -68,9 +70,9 @@ public class WorkScheduleController {
             @RequestParam(required = false) String date
     ) {
         WorkSchedule workSchedule = new WorkSchedule(projectId, employeeId, date);
-        List<WorkScheduleModel> workScheduleModels = workScheduleService.findByFilter(workSchedule);
+        List<WorkScheduleDTO> workScheduleDTO = workScheduleService.findByFilter(workSchedule);
 
-        return workScheduleModels.isEmpty() ? ResponseEntity.status(HttpStatus.NO_CONTENT).build() :
-                ResponseEntity.status(HttpStatus.OK).body(workScheduleModels);
+        return workScheduleDTO.isEmpty() ? ResponseEntity.status(HttpStatus.NO_CONTENT).build() :
+                ResponseEntity.status(HttpStatus.OK).body(workScheduleDTO);
     }
 }

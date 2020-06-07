@@ -1,7 +1,7 @@
 package com.bandtec.gespospring.service.Employee;
 
 import com.bandtec.gespospring.entity.table.Employee;
-import com.bandtec.gespospring.model.EmployeeModel;
+import com.bandtec.gespospring.DTO.EmployeeDTO;
 import com.bandtec.gespospring.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -30,7 +30,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public EmployeeModel findByCpf(String cpf) {
+    public EmployeeDTO findByCpf(String cpf) {
         return employeeRepository.findByCpfEscoped(cpf);
     }
 

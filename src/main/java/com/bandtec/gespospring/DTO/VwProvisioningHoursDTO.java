@@ -1,4 +1,4 @@
-package com.bandtec.gespospring.model;
+package com.bandtec.gespospring.DTO;
 
 import com.bandtec.gespospring.entity.table.Category;
 import com.bandtec.gespospring.entity.table.Employee;
@@ -11,7 +11,7 @@ import java.util.Date;
 
 @Getter
 @Setter
-public class VwProvisioningHoursModel {
+public class VwProvisioningHoursDTO {
 
     private Integer id;
     private Integer amountHours;
@@ -22,7 +22,7 @@ public class VwProvisioningHoursModel {
     private Project project;
 
 
-    public VwProvisioningHoursModel(VwProvisioningHours vwProvisioningHours) {
+    public VwProvisioningHoursDTO(VwProvisioningHours vwProvisioningHours) {
         this.employee = new Employee();
         this.category = new Category();
         this.project = new Project();

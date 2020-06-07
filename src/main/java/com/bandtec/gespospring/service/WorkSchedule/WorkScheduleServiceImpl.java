@@ -1,8 +1,11 @@
 package com.bandtec.gespospring.service.WorkSchedule;
 
+import com.bandtec.gespospring.DTO.update.WorkScheduleUpdateDTO;
+import com.bandtec.gespospring.entity.table.Project;
 import com.bandtec.gespospring.entity.table.WorkSchedule;
-import com.bandtec.gespospring.model.WorkScheduleModel;
+import com.bandtec.gespospring.DTO.WorkScheduleDTO;
 import com.bandtec.gespospring.repository.WorkScheduleRepository;
+import com.bandtec.gespospring.service.Project.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
@@ -18,6 +21,9 @@ public class WorkScheduleServiceImpl implements WorkScheduleService {
     @Autowired
     private WorkScheduleRepository workScheduleRepository;
 
+    @Autowired
+    private ProjectService projectService;
+
     @Override
     public void save(List<WorkSchedule> workSchedules) {
         workScheduleRepository.saveAll(workSchedules);
@@ -30,11 +36,14 @@ public class WorkScheduleServiceImpl implements WorkScheduleService {
     }
 
     @Override
-    public Boolean update(WorkSchedule workSchedule) {
+    public Boolean update(WorkScheduleUpdateDTO workSchedule) {
+        Project project = projectService.findById(workSchedule.getProject().getId());
+
         return workScheduleRepository.findById(workSchedule.getId()).map( wks -> {
             wks.setAmountHours(workSchedule.getAmountHours());
             wks.setDsWork(workSchedule.getDsWork());
-            wks.setProject(workSchedule.getProject());
+            wks.setProject(project);
+            wks.setCreationDate(workSchedule.getCreationDate());
             workScheduleRepository.save(wks);
 
             return true;
@@ -50,24 +59,24 @@ public class WorkScheduleServiceImpl implements WorkScheduleService {
     }
 
     @Override
-    public List<WorkScheduleModel> findByEmployee(Integer id) {
+    public List<WorkScheduleDTO> findByEmployee(Integer id) {
         return workScheduleRepository.findByEmployeeId(id);
     }
 
     @Override
-    public List<WorkScheduleModel> findByFilter(WorkSchedule workSchedule) {
+    public List<WorkScheduleDTO> findByFilter(WorkSchedule workSchedule) {
         List<WorkSchedule> workScheduleList = workScheduleRepository.findAll(Example.of(workSchedule));
-        List<WorkScheduleModel> workScheduleModels = new ArrayList<>();
+        List<WorkScheduleDTO> workScheduleDTO = new ArrayList<>();
 
         if (workScheduleList.isEmpty()) {
-            return workScheduleModels;
+            return workScheduleDTO;
         }
 
         for (WorkSchedule wor :
                 workScheduleList) {
-            workScheduleModels.add(new WorkScheduleModel(wor));
+            workScheduleDTO.add(new WorkScheduleDTO(wor));
         }
 
-        return workScheduleModels;
+        return workScheduleDTO;
     }
 }

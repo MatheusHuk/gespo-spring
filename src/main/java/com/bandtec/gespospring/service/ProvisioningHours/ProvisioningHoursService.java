@@ -2,7 +2,7 @@ package com.bandtec.gespospring.service.ProvisioningHours;
 
 import com.bandtec.gespospring.entity.table.ProvisioningHours;
 import com.bandtec.gespospring.entity.view.VwProvisioningHours;
-import com.bandtec.gespospring.model.VwProvisioningHoursModel;
+import com.bandtec.gespospring.DTO.VwProvisioningHoursDTO;
 
 import java.util.List;
 
@@ -11,5 +11,5 @@ public interface ProvisioningHoursService {
     ProvisioningHours findById(Integer id);
     Boolean update(ProvisioningHours provisioningHours);
     Boolean delete(Integer id);
-    List<VwProvisioningHoursModel> findByFilter(VwProvisioningHours provisioningHoursMouth);
+    List<VwProvisioningHoursDTO> findByFilter(VwProvisioningHours provisioningHoursMouth);
 }
