@@ -37,7 +37,7 @@ public class VwProvisioningHours implements Serializable {
 
         try {
             if(month != null) {
-                Date formattedDate = new SimpleDateFormat("yyyy-MM-01").parse(month);
+                Date formattedDate = new SimpleDateFormat("yyyy-MM-dd").parse(month);
                 this.setCreationDate(formattedDate);
             }
         } catch (ParseException e) {
