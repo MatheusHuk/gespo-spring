@@ -4,6 +4,7 @@ import com.bandtec.gespospring.entity.AbstractModel;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -26,5 +27,5 @@ public class Project extends AbstractModel {
     @JoinTable(name = "EMPLOYEES_PROJECTS",
             joinColumns = @JoinColumn(name = "FK_PROJECT"),
             inverseJoinColumns = @JoinColumn(name = "FK_EMPLOYEE"))
-    Set<Employee> employees;
+    List<Employee> employees;
 }

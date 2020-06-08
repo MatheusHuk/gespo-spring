@@ -1,13 +1,16 @@
 package com.bandtec.gespospring.service.Employee;
 
+import com.bandtec.gespospring.DTO.EmployeeProjectDTO;
 import com.bandtec.gespospring.entity.table.Employee;
-import com.bandtec.gespospring.DTO.EmployeeDTO;
+import com.bandtec.gespospring.DTO.EmployeeLoginDTO;
+import com.bandtec.gespospring.entity.table.Project;
 import com.bandtec.gespospring.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Transactional
@@ -30,8 +33,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public EmployeeDTO findByCpf(String cpf) {
-        return employeeRepository.findByCpfEscoped(cpf);
+    public EmployeeLoginDTO findByCpf(String cpf) {
+        return employeeRepository.findByCpdScoped(cpf);
     }
 
     @Override
@@ -67,5 +70,24 @@ public class EmployeeServiceImpl implements EmployeeService {
             employeeRepository.deleteById(id);
             return true;
         }).orElse(false);
+    }
+
+    @Override
+    public List<EmployeeProjectDTO> findByProject(Integer projectId) {
+         Project project = new Project();
+         project.setId(projectId);
+
+         List<Employee> employees = employeeRepository.findByProjects(project);
+         List<EmployeeProjectDTO> employeeProjectDTOS = new ArrayList<>();
+
+         if(employees.isEmpty()){
+             return employeeProjectDTOS;
+         }
+
+        for (Employee employee : employees) {
+            employeeProjectDTOS.add(new EmployeeProjectDTO(employee));
+        }
+
+        return employeeProjectDTOS;
     }
 }
