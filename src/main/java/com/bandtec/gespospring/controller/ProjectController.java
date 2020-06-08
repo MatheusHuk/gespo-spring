@@ -2,6 +2,7 @@ package com.bandtec.gespospring.controller;
 
 import com.bandtec.gespospring.entity.table.Project;
 import com.bandtec.gespospring.entity.view.VwSimpleProject;
+import com.bandtec.gespospring.repository.ProjectRepository;
 import com.bandtec.gespospring.service.Project.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

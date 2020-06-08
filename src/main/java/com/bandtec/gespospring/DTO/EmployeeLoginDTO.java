@@ -7,14 +7,14 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class EmployeeDTO {
+public class EmployeeLoginDTO {
 
     private Integer id;
     private String cpf;
     private String name;
     private Permission permission;
 
-    public EmployeeDTO(Employee employee) {
+    public EmployeeLoginDTO(Employee employee) {
         this.id = employee.getId();
         this.cpf = employee.getCpf();
         this.name = employee.getName();

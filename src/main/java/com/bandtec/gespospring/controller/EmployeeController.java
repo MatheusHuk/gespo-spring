@@ -1,7 +1,8 @@
 package com.bandtec.gespospring.controller;
 
+import com.bandtec.gespospring.DTO.EmployeeProjectDTO;
 import com.bandtec.gespospring.entity.table.Employee;
-import com.bandtec.gespospring.DTO.EmployeeDTO;
+import com.bandtec.gespospring.DTO.EmployeeLoginDTO;
 import com.bandtec.gespospring.service.Security.SecurityService;
 import com.bandtec.gespospring.service.Employee.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,7 @@ public class EmployeeController {
         if (cpf == null || password == null)
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 
-        EmployeeDTO user = securityService.autoLogin(cpf, password);
+        EmployeeLoginDTO user = securityService.autoLogin(cpf, password);
 
         return user != null ? ResponseEntity.status(HttpStatus.OK).body(user) :
                 ResponseEntity.status(HttpStatus.NOT_FOUND).build();
@@ -68,6 +69,16 @@ public class EmployeeController {
     ) {
         return employeeService.update(employee) ? ResponseEntity.status(HttpStatus.OK).build() :
                 ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    }
+
+    @GetMapping("/project")
+    public ResponseEntity findByProject(
+            @RequestParam Integer projectId
+    ) {
+        List<EmployeeProjectDTO> employeeProjectDTOS = employeeService.findByProject(projectId);
+
+        return employeeProjectDTOS.isEmpty() ? ResponseEntity.status(HttpStatus.NO_CONTENT).build() :
+                ResponseEntity.status(HttpStatus.OK).body(employeeProjectDTOS);
     }
 
 }

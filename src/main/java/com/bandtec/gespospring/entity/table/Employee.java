@@ -7,7 +7,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 @Getter
 @Setter
@@ -40,6 +40,6 @@ public class Employee extends AbstractModel {
 
     @ManyToMany(mappedBy = "employees")
     @JsonIgnore
-    Set<Project> projects;
+    List<Project> projects;
 
 }
