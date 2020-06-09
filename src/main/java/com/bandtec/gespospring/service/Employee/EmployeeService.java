@@ -1,6 +1,6 @@
 package com.bandtec.gespospring.service.Employee;
 
-import com.bandtec.gespospring.DTO.EmployeeProjectDTO;
+import com.bandtec.gespospring.DTO.EmployeeDTO;
 import com.bandtec.gespospring.entity.table.Employee;
 import com.bandtec.gespospring.DTO.EmployeeLoginDTO;
 
@@ -12,5 +12,6 @@ public interface EmployeeService {
     Employee findById(Integer id);
     Boolean update(Employee employee);
     Boolean delete(Integer id);
-    List<EmployeeProjectDTO> findByProject(Integer projectId);
+    List<EmployeeDTO> findByProject(Integer projectId);
+    List<EmployeeDTO> findByCategory(Integer categoryId);
 }

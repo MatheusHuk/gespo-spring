@@ -6,14 +6,15 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class EmployeeProjectDTO {
+public class EmployeeDTO {
     private Employee employee;
 
-    public EmployeeProjectDTO(Employee employee) {
+    public EmployeeDTO(Employee employee) {
         this.employee = new Employee();
 
         this.employee.setId(employee.getId());
         this.employee.setName(employee.getName());
+        this.employee.setTeam(employee.getTeam());
         this.employee.setCategory(employee.getCategory());
     }
 }

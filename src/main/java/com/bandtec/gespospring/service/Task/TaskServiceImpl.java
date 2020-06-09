@@ -1,5 +1,6 @@
 package com.bandtec.gespospring.service.Task;
 
+import com.bandtec.gespospring.DTO.update.TaskUpdateDTO;
 import com.bandtec.gespospring.entity.table.Task;
 import com.bandtec.gespospring.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +23,12 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public Task findById(Integer id) {
-        return null;
+        return taskRepository.findById(id)
+                .orElse(null);
     }
 
     @Override
-    public Boolean update(Task task) {
+    public Boolean update(TaskUpdateDTO task) {
         return taskRepository.findById(task.getId()).map( tas -> {
             tas.setCategory(task.getCategory());
             tas.setDescription(task.getDescription());
@@ -39,7 +41,10 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public Boolean delete(Integer id) {
-        return null;
+        return taskRepository.findById(id).map(task -> {
+            taskRepository.delete(task);
+            return true;
+        }).orElse(false);
     }
 
     @Override

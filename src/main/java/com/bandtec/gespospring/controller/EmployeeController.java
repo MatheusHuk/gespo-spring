@@ -1,6 +1,6 @@
 package com.bandtec.gespospring.controller;
 
-import com.bandtec.gespospring.DTO.EmployeeProjectDTO;
+import com.bandtec.gespospring.DTO.EmployeeDTO;
 import com.bandtec.gespospring.entity.table.Employee;
 import com.bandtec.gespospring.DTO.EmployeeLoginDTO;
 import com.bandtec.gespospring.service.Security.SecurityService;
@@ -75,10 +75,20 @@ public class EmployeeController {
     public ResponseEntity findByProject(
             @RequestParam Integer projectId
     ) {
-        List<EmployeeProjectDTO> employeeProjectDTOS = employeeService.findByProject(projectId);
+        List<EmployeeDTO> employeeDTOList = employeeService.findByProject(projectId);
 
-        return employeeProjectDTOS.isEmpty() ? ResponseEntity.status(HttpStatus.NO_CONTENT).build() :
-                ResponseEntity.status(HttpStatus.OK).body(employeeProjectDTOS);
+        return employeeDTOList.isEmpty() ? ResponseEntity.status(HttpStatus.NO_CONTENT).build() :
+                ResponseEntity.status(HttpStatus.OK).body(employeeDTOList);
+    }
+
+    @GetMapping("/category")
+    public ResponseEntity findByCategory(
+            @RequestParam Integer categoryId
+    ) {
+        List<EmployeeDTO> employeeDTOList = employeeService.findByCategory(categoryId);
+
+        return employeeDTOList.isEmpty() ? ResponseEntity.status(HttpStatus.NO_CONTENT).build() :
+                ResponseEntity.status(HttpStatus.OK).body(employeeDTOList);
     }
 
 }
