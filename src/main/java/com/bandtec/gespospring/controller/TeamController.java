@@ -1,30 +1,28 @@
 package com.bandtec.gespospring.controller;
 
-import com.bandtec.gespospring.DTO.update.TaskUpdateDTO;
-import com.bandtec.gespospring.entity.table.Task;
-import com.bandtec.gespospring.service.Task.TaskService;
+import com.bandtec.gespospring.entity.table.Team;
+import com.bandtec.gespospring.service.Team.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
 @RestController
-@RequestMapping("/tasks")
-public class TaskController {
+@RequestMapping("/teams")
+public class TeamController {
 
     @Autowired
-    private TaskService taskService;
+    private TeamService teamService;
 
     @PostMapping
     public ResponseEntity create(
-            @RequestBody List<Task> task
+            @RequestBody List<Team> team
     ) {
-        try{
-            taskService.save(task);
+        try {
+            teamService.save(team);
             return ResponseEntity.status(HttpStatus.OK).build();
         } catch (Exception e) {
             System.out.println(e);
@@ -36,17 +34,16 @@ public class TaskController {
     public ResponseEntity read(
             @RequestParam Integer id
     ) {
-        Task task = taskService.findById(id);
-
-        return task != null ? ResponseEntity.status(HttpStatus.OK).body(task) :
+        Team team = teamService.findById(id);
+        return team != null ? ResponseEntity.status(HttpStatus.OK).body(team) :
                 ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
     @PutMapping
     public ResponseEntity update(
-        @RequestBody @Valid TaskUpdateDTO task
+            @RequestBody Team team
     ) {
-        return taskService.update(task) ? ResponseEntity.status(HttpStatus.OK).build() :
+        return teamService.update(team) ? ResponseEntity.status(HttpStatus.OK).build() :
                 ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
@@ -54,18 +51,15 @@ public class TaskController {
     public ResponseEntity delete(
             @RequestParam Integer id
     ) {
-        return taskService.delete(id) ? ResponseEntity.status(HttpStatus.OK).build() :
+        return teamService.delete(id) ? ResponseEntity.status(HttpStatus.OK).build() :
                 ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
-    @GetMapping("/project")
-    public ResponseEntity findByProject(
-            @RequestParam Integer id
-    ) {
-        List<Task> tasks = taskService.findByProject(id);
+    @GetMapping("/all")
+    public ResponseEntity readAll() {
+        List<Team> teams = teamService.findAll();
 
-        return tasks.isEmpty() ? ResponseEntity.status(HttpStatus.OK).body(tasks) :
-                ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        return teams.isEmpty() ? ResponseEntity.status(HttpStatus.NO_CONTENT).build() :
+                ResponseEntity.status(HttpStatus.OK).body(teams);
     }
-
 }

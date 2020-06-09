@@ -9,4 +9,5 @@ public interface CostCenterService {
     CostCenter findById(Integer id);
     Boolean update(CostCenter costCenter);
     Boolean delete(Integer id);
+    List<CostCenter> findAll();
 }

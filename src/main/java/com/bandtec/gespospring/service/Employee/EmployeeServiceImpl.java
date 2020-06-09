@@ -1,6 +1,7 @@
 package com.bandtec.gespospring.service.Employee;
 
-import com.bandtec.gespospring.DTO.EmployeeProjectDTO;
+import com.bandtec.gespospring.DTO.EmployeeDTO;
+import com.bandtec.gespospring.entity.table.Category;
 import com.bandtec.gespospring.entity.table.Employee;
 import com.bandtec.gespospring.DTO.EmployeeLoginDTO;
 import com.bandtec.gespospring.entity.table.Project;
@@ -73,21 +74,40 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public List<EmployeeProjectDTO> findByProject(Integer projectId) {
+    public List<EmployeeDTO> findByProject(Integer projectId) {
          Project project = new Project();
          project.setId(projectId);
 
          List<Employee> employees = employeeRepository.findByProjects(project);
-         List<EmployeeProjectDTO> employeeProjectDTOS = new ArrayList<>();
+         List<EmployeeDTO> employeeDTOList = new ArrayList<>();
 
          if(employees.isEmpty()){
-             return employeeProjectDTOS;
+             return employeeDTOList;
          }
 
         for (Employee employee : employees) {
-            employeeProjectDTOS.add(new EmployeeProjectDTO(employee));
+            employeeDTOList.add(new EmployeeDTO(employee));
         }
 
-        return employeeProjectDTOS;
+        return employeeDTOList;
+    }
+
+    @Override
+    public List<EmployeeDTO> findByCategory(Integer categoryId) {
+        Category category = new Category();
+        category.setId(categoryId);
+
+        List<Employee> employees = employeeRepository.findByCategory(category);
+        List<EmployeeDTO> employeeDTOList = new ArrayList<>();
+
+        if(employees.isEmpty()){
+            return employeeDTOList;
+        }
+
+        for (Employee employee : employees) {
+            employeeDTOList.add(new EmployeeDTO(employee));
+        }
+
+        return employeeDTOList;
     }
 }

@@ -50,4 +50,12 @@ public class CostCenterController {
         return costCenterService.delete(id) ? ResponseEntity.status(HttpStatus.OK).build() :
                 ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
+
+    @GetMapping("/all")
+    public ResponseEntity readAll(){
+        List<CostCenter> costCenters = costCenterService.findAll();
+
+        return costCenters.isEmpty() ? ResponseEntity.status(HttpStatus.NO_CONTENT).build() :
+                ResponseEntity.status(HttpStatus.OK).body(costCenters);
+    }
 }

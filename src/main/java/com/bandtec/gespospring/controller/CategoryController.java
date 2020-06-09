@@ -21,18 +21,22 @@ public class CategoryController {
     public ResponseEntity create(
             @RequestBody List<Category> categories
     ){
-        categoryService.save(categories);
-
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+        try {
+            categoryService.save(categories);
+            return ResponseEntity.status(HttpStatus.CREATED).build();
+        } catch (Exception e) {
+            System.out.println(e);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
     }
 
     @GetMapping
     public ResponseEntity read(
-            @RequestParam(required = false) Integer id
+            @RequestParam Integer id
     ){
-        List<Category> category = categoryService.find(id);
-        return category.isEmpty() ? ResponseEntity.status(HttpStatus.NO_CONTENT).build() :
-                ResponseEntity.status(HttpStatus.OK).body(category);
+        Category category = categoryService.findById(id);
+        return category != null ? ResponseEntity.status(HttpStatus.OK).body(category) :
+                ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
     @PutMapping
@@ -49,5 +53,13 @@ public class CategoryController {
     ){
         return categoryService.delete(id) ? ResponseEntity.status(HttpStatus.OK).build() :
                 ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity readAll(){
+        List<Category> categories = categoryService.findAll();
+
+        return categories.isEmpty() ? ResponseEntity.status(HttpStatus.NO_CONTENT).build() :
+                ResponseEntity.status(HttpStatus.OK).body(categories);
     }
 }

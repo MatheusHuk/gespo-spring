@@ -1,5 +1,7 @@
 package com.bandtec.gespospring.repository;
 
+import com.bandtec.gespospring.DTO.EmployeeDTO;
+import com.bandtec.gespospring.entity.table.Category;
 import com.bandtec.gespospring.entity.table.Employee;
 import com.bandtec.gespospring.DTO.EmployeeLoginDTO;
 import com.bandtec.gespospring.entity.table.Project;
@@ -15,4 +17,6 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
     EmployeeLoginDTO findByCpdScoped(String cpf);
 
     List<Employee> findByProjects(Project project);
+
+    List<Employee> findByCategory(Category category);
 }

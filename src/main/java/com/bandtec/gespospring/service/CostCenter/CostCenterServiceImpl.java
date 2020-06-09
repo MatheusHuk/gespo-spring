@@ -44,4 +44,9 @@ public class CostCenterServiceImpl implements CostCenterService {
             return true;
         }).orElse(false);
     }
+
+    @Override
+    public List<CostCenter> findAll() {
+        return costCenterRepository.findAll();
+    }
 }
