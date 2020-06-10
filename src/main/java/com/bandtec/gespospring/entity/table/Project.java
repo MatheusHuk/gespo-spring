@@ -1,6 +1,7 @@
 package com.bandtec.gespospring.entity.table;
 
 import com.bandtec.gespospring.entity.AbstractModel;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -23,6 +24,7 @@ public class Project extends AbstractModel {
     @JoinColumn(name = "FK_CUST_CENTER")
     private CostCenter costCenter;
 
+    @JsonIgnore
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "EMPLOYEES_PROJECTS",
             joinColumns = @JoinColumn(name = "FK_PROJECT"),
