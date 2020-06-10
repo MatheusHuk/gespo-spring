@@ -41,9 +41,13 @@ public class EmployeeController {
     public ResponseEntity create(
             @RequestBody List<Employee> employees
     ) {
-        employeeService.save(employees);
-
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+        try {
+            employeeService.save(employees);
+            return ResponseEntity.status(HttpStatus.CREATED).build();
+        } catch (Exception e) {
+            System.out.println(e);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
     }
 
     @GetMapping

@@ -21,8 +21,12 @@ public class CostCenterController {
     public ResponseEntity create(
         @RequestBody List<CostCenter> costCenter
     ) {
-        costCenterService.save(costCenter);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+        try {
+            costCenterService.save(costCenter);
+            return ResponseEntity.status(HttpStatus.CREATED).build();
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
     }
 
     @GetMapping

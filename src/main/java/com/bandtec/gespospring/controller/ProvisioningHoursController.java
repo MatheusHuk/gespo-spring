@@ -25,11 +25,9 @@ public class ProvisioningHoursController {
     ) {
         try {
             provisioningHoursService.save(provisioningHours);
-
             return ResponseEntity.status(HttpStatus.CREATED).build();
         } catch (Exception e) {
             System.out.println(e);
-
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
     }

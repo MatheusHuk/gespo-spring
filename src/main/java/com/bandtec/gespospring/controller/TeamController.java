@@ -23,7 +23,7 @@ public class TeamController {
     ) {
         try {
             teamService.save(team);
-            return ResponseEntity.status(HttpStatus.OK).build();
+            return ResponseEntity.status(HttpStatus.CREATED).build();
         } catch (Exception e) {
             System.out.println(e);
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
