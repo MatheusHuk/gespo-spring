@@ -24,9 +24,13 @@ public class WorkScheduleController {
     public ResponseEntity create(
             @RequestBody List<WorkSchedule> workSchedules
     ) {
-        workScheduleService.save(workSchedules);
-
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+        try {
+            workScheduleService.save(workSchedules);
+            return ResponseEntity.status(HttpStatus.CREATED).build();
+        } catch (Exception e) {
+            System.out.println(e);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
     }
 
     @GetMapping

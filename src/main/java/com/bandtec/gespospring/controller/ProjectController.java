@@ -24,8 +24,13 @@ public class ProjectController {
     public ResponseEntity create(
             @RequestBody List<Project> projects
     ) {
-        projectService.save(projects);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+        try {
+            projectService.save(projects);
+            return ResponseEntity.status(HttpStatus.CREATED).build();
+        } catch (Exception e) {
+            System.out.println(e);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
     }
 
     @GetMapping
