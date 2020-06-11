@@ -23,9 +23,11 @@ public class VwProvisioningHours implements Serializable {
 
     @Column(name = "FK_CATEGORY")
     private Integer categoryId;
+    private String dsCategory;
 
     @Column(name = "FK_PROJECT")
     private Integer projectId;
+    private String name;
 
     @Column(name = "FK_EMPLOYEE")
     private Integer employeeId;
