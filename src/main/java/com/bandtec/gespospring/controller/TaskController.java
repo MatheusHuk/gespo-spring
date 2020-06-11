@@ -64,8 +64,8 @@ public class TaskController {
     ) {
         List<Task> tasks = taskService.findByProject(id);
 
-        return tasks.isEmpty() ? ResponseEntity.status(HttpStatus.OK).body(tasks) :
-                ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        return tasks.isEmpty() ? ResponseEntity.status(HttpStatus.NO_CONTENT).build() :
+                ResponseEntity.status(HttpStatus.OK).body(tasks);
     }
 
 }
