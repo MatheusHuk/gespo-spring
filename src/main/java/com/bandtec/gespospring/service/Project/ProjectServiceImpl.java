@@ -60,4 +60,25 @@ public class ProjectServiceImpl implements ProjectService{
         return employeeRepository.findById(id).map(employee -> projectRepository.findByEmployees(id))
                 .orElse(null);
     }
+
+    @Override
+    public Boolean addResourceAllocation(Integer employeeId, Integer projectId) {
+        projectRepository.findById(projectId).map(project -> {
+            employeeRepository.findById(employeeId).map(employee -> {
+                project.getEmployees().add(employee);
+                return true;
+            });
+            return false;
+        });
+        return false;
+    }
+
+    @Override
+    public Boolean removeResourceAllocation(Integer employeeId, Integer projectId) {
+        return projectRepository.findById(projectId).map(project ->
+                employeeRepository.findById(employeeId).map(employee ->
+                        project.getEmployees().remove(employee))
+                        .orElse(false))
+                .orElse(false);
+    }
 }
