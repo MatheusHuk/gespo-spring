@@ -95,5 +95,14 @@ public class EmployeeController {
                 ResponseEntity.status(HttpStatus.OK).body(employeeDTOList);
     }
 
+    @GetMapping("/distinct-project")
+    public ResponseEntity findDistinctByProjects(
+            @RequestParam Integer projectId
+    ) {
+        List<Employee> employees = employeeService.findDistinctByProjects(projectId);
+
+        return employees.isEmpty() ? ResponseEntity.status(HttpStatus.NO_CONTENT).build() :
+                ResponseEntity.status(HttpStatus.OK).body(employees);
+    }
 }
 

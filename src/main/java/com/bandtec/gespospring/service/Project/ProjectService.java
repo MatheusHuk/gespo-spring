@@ -12,4 +12,6 @@ public interface ProjectService {
    Boolean update(Project project);
    Boolean delete(Integer id);
    Set<VwSimpleProject> findByEmployee(Integer id);
+   Boolean addResourceAllocation(Integer employeeId, Integer projectId);
+   Boolean removeResourceAllocation(Integer employeeId, Integer projectId);
 }

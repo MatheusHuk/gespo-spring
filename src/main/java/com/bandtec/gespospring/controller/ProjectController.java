@@ -68,4 +68,21 @@ public class ProjectController {
                 ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
+    @DeleteMapping("/delete-allocation")
+    public ResponseEntity removeResourceAllocation(
+            @RequestParam Integer employeeId,
+            @RequestParam Integer projectId
+    ) {
+        return projectService.removeResourceAllocation(employeeId, projectId) ?
+                ResponseEntity.status(HttpStatus.OK).build() : ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    }
+
+    @PutMapping("/add-allocation")
+    public ResponseEntity addResourceAllocation(
+            @RequestParam Integer employeeId,
+            @RequestParam Integer projectId
+    ){
+        return projectService.addResourceAllocation(employeeId, projectId) ?
+                ResponseEntity.status(HttpStatus.OK).build() : ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    }
 }

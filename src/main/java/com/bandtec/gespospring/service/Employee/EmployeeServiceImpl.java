@@ -110,4 +110,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         return employeeDTOList;
     }
+
+    @Override
+    public List<Employee> findDistinctByProjects(Integer projectId) {
+        Project project = new Project();
+        project.setId(projectId);
+
+        return employeeRepository.findDistinctByProjects(project);
+    }
 }

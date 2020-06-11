@@ -14,4 +14,5 @@ public interface EmployeeService {
     Boolean delete(Integer id);
     List<EmployeeDTO> findByProject(Integer projectId);
     List<EmployeeDTO> findByCategory(Integer categoryId);
+    List<Employee> findDistinctByProjects(Integer projectId);
 }
