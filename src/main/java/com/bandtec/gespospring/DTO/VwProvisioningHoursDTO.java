@@ -32,12 +32,13 @@ public class VwProvisioningHoursDTO {
         this.creationDate = vwProvisioningHours.getCreationDate();
 
         this.employee.setId(vwProvisioningHours.getEmployeeId());
+        this.employee.setName(vwProvisioningHours.getEmployeeName());
 
         this.category.setId(vwProvisioningHours.getCategoryId());
         this.category.setDsCategory(vwProvisioningHours.getDsCategory());
 
         this.project.setIsDone(null);
         this.project.setId(vwProvisioningHours.getProjectId());
-        this.project.setName(vwProvisioningHours.getName());
+        this.project.setName(vwProvisioningHours.getProjectName());
     }
 }

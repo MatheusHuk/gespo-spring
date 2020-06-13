@@ -27,10 +27,11 @@ public class VwProvisioningHours implements Serializable {
 
     @Column(name = "FK_PROJECT")
     private Integer projectId;
-    private String name;
+    private String projectName;
 
     @Column(name = "FK_EMPLOYEE")
     private Integer employeeId;
+    private String employeeName;
 
     public VwProvisioningHours(Integer projectId, Integer employeeId, Integer categoryId, String month) {
         this.projectId = projectId;
