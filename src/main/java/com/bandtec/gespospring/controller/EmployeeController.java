@@ -59,6 +59,14 @@ public class EmployeeController {
                 ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
+    @PutMapping
+    public ResponseEntity update(
+            @RequestBody Employee employee
+    ) {
+        return employeeService.update(employee) ? ResponseEntity.status(HttpStatus.OK).build() :
+                ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    }
+
     @DeleteMapping
     public ResponseEntity delete(
             @RequestParam Integer id
@@ -67,12 +75,12 @@ public class EmployeeController {
                 ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
-    @PutMapping
-    public ResponseEntity update(
-            @RequestBody Employee employee
-    ) {
-        return employeeService.update(employee) ? ResponseEntity.status(HttpStatus.OK).build() :
-                ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    @GetMapping("/all")
+    public ResponseEntity readAll(){
+        List<Employee> employees = employeeService.findAll();
+
+        return employees.isEmpty() ? ResponseEntity.status(HttpStatus.NO_CONTENT).build() :
+                ResponseEntity.status(HttpStatus.OK).body(employees);
     }
 
     @GetMapping("/project")

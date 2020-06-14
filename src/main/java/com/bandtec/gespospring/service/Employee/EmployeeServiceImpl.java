@@ -118,4 +118,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         return employeeRepository.findDistinctByProjects(project);
     }
+
+    @Override
+    public List<Employee> findAll() {
+        return employeeRepository.findAll();
+    }
 }
