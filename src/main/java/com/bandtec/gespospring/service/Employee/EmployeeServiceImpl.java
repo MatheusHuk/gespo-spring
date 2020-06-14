@@ -116,7 +116,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         Project project = new Project();
         project.setId(projectId);
 
-        return employeeRepository.findDistinctByProjects(project);
+        return employeeRepository.findDistinctByProjectsIsNot(project);
     }
 
     @Override
