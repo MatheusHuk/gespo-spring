@@ -1,9 +1,10 @@
 package com.bandtec.gespospring.entity.table;
 
-import com.bandtec.gespospring.entity.AbstractModel;
 import lombok.*;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -11,7 +12,17 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Entity
 @Table(name = "PROVISIONING_HOURS")
-public class ProvisioningHours extends AbstractModel {
+public class ProvisioningHours {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date creationDate;
+
+    @Temporal(TemporalType.TIMESTAMP)   
+    @UpdateTimestamp
+    private Date lastUpdateDate;
 
     private Double amountHours;
 
@@ -22,5 +33,4 @@ public class ProvisioningHours extends AbstractModel {
     @ManyToOne
     @JoinColumn(name = "FK_EMPLOYEE")
     private Employee employee;
-
 }
