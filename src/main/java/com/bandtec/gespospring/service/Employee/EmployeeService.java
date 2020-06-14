@@ -15,4 +15,5 @@ public interface EmployeeService {
     List<EmployeeDTO> findByProject(Integer projectId);
     List<EmployeeDTO> findByCategory(Integer categoryId);
     List<Employee> findDistinctByProjects(Integer projectId);
+    List<Employee> findAll();
 }
