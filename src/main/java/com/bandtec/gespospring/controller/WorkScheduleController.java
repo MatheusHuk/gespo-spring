@@ -2,7 +2,6 @@ package com.bandtec.gespospring.controller;
 
 import com.bandtec.gespospring.DTO.update.WorkScheduleUpdateDTO;
 import com.bandtec.gespospring.entity.table.WorkSchedule;
-import com.bandtec.gespospring.DTO.WorkScheduleDTO;
 import com.bandtec.gespospring.service.WorkSchedule.WorkScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -61,7 +60,7 @@ public class WorkScheduleController {
     public ResponseEntity readByEmployee(
             @RequestParam Integer employeeId
     ) {
-        List<WorkScheduleDTO> workSchedulesByEmployee = workScheduleService.findByEmployee(employeeId);
+        List<WorkSchedule> workSchedulesByEmployee = workScheduleService.findByEmployee(employeeId);
 
         return workSchedulesByEmployee.isEmpty() ? ResponseEntity.status(HttpStatus.NO_CONTENT).build() :
                 ResponseEntity.status(HttpStatus.OK).body(workSchedulesByEmployee);
@@ -74,9 +73,9 @@ public class WorkScheduleController {
             @RequestParam(required = false) String date
     ) {
         WorkSchedule workSchedule = new WorkSchedule(projectId, employeeId, date);
-        List<WorkScheduleDTO> workScheduleDTO = workScheduleService.findByFilter(workSchedule);
+        List<WorkSchedule> workScheduleList = workScheduleService.findByFilter(workSchedule);
 
-        return workScheduleDTO.isEmpty() ? ResponseEntity.status(HttpStatus.NO_CONTENT).build() :
-                ResponseEntity.status(HttpStatus.OK).body(workScheduleDTO);
+        return workScheduleList.isEmpty() ? ResponseEntity.status(HttpStatus.NO_CONTENT).build() :
+                ResponseEntity.status(HttpStatus.OK).body(workScheduleList);
     }
 }
