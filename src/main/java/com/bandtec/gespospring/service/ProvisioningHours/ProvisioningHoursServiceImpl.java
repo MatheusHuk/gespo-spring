@@ -1,8 +1,9 @@
 package com.bandtec.gespospring.service.ProvisioningHours;
 
+import com.bandtec.gespospring.DTO.update.ProvisioningHoursUpdateDTO;
 import com.bandtec.gespospring.entity.table.ProvisioningHours;
 import com.bandtec.gespospring.entity.view.VwProvisioningHours;
-import com.bandtec.gespospring.DTO.VwProvisioningHoursDTO;
+import com.bandtec.gespospring.DTO.ProvisioningHoursDTO;
 import com.bandtec.gespospring.repository.ProvisioningHoursRepository;
 import com.bandtec.gespospring.repository.VwProvisioningHoursRepository;
 import org.springframework.data.domain.Example;
@@ -35,8 +36,9 @@ public class ProvisioningHoursServiceImpl implements ProvisioningHoursService{
     }
 
     @Override
-    public Boolean update(ProvisioningHours provisioningHours) {
+    public Boolean update(ProvisioningHoursUpdateDTO provisioningHours) {
         return provisioningHoursRepository.findById(provisioningHours.getId()).map( hours -> {
+            hours.setCreationDate(provisioningHours.getCreationDate());
             hours.setAmountHours(provisioningHours.getAmountHours());
             hours.setEmployee(provisioningHours.getEmployee());
             hours.setProject(provisioningHours.getProject());
@@ -55,11 +57,11 @@ public class ProvisioningHoursServiceImpl implements ProvisioningHoursService{
     }
 
     @Override
-    public List<VwProvisioningHoursDTO> findByFilter(VwProvisioningHours provisioningHoursMouth) {
+    public List<ProvisioningHoursDTO> findByFilter(VwProvisioningHours provisioningHoursMouth) {
         List<VwProvisioningHours> provisioningHoursList = provisioningHoursMouthRepository
                 .findAll(Example.of(provisioningHoursMouth));
 
-        List<VwProvisioningHoursDTO> provisioningHoursModels = new ArrayList<>();
+        List<ProvisioningHoursDTO> provisioningHoursModels = new ArrayList<>();
 
         if (provisioningHoursList.isEmpty()) {
             return provisioningHoursModels;
@@ -67,7 +69,7 @@ public class ProvisioningHoursServiceImpl implements ProvisioningHoursService{
 
         for (VwProvisioningHours prov :
                 provisioningHoursList) {
-            provisioningHoursModels.add(new VwProvisioningHoursDTO(prov));
+            provisioningHoursModels.add(new ProvisioningHoursDTO(prov));
         }
 
         return provisioningHoursModels;
