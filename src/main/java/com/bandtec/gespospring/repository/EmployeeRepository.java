@@ -15,5 +15,5 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
     EmployeeLoginDTO findByCpdScoped(String cpf);
     List<Employee> findByProjects(Project project);
     List<Employee> findByCategory(Category category);
-    List<Employee> findDistinctByProjectsIsNot(Project project);
+    List<Employee> findByProjectsIsNot(Project project);
 }
