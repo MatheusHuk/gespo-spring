@@ -1,14 +1,16 @@
 package com.bandtec.gespospring.controller;
 
+import com.bandtec.gespospring.DTO.update.ProvisioningHoursUpdateDTO;
 import com.bandtec.gespospring.entity.table.ProvisioningHours;
 import com.bandtec.gespospring.entity.view.VwProvisioningHours;
-import com.bandtec.gespospring.DTO.VwProvisioningHoursDTO;
+import com.bandtec.gespospring.DTO.ProvisioningHoursDTO;
 import com.bandtec.gespospring.service.ProvisioningHours.ProvisioningHoursService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
@@ -44,7 +46,7 @@ public class ProvisioningHoursController {
 
     @PutMapping
     public ResponseEntity update(
-            @RequestBody ProvisioningHours provisioningHours
+            @RequestBody @Valid ProvisioningHoursUpdateDTO provisioningHours
     ) {
         return provisioningHoursService.update(provisioningHours) ? ResponseEntity.status(HttpStatus.OK).build() :
                 ResponseEntity.status(HttpStatus.NOT_FOUND).build();
@@ -68,7 +70,7 @@ public class ProvisioningHoursController {
         VwProvisioningHours provisioningHoursMouth = new VwProvisioningHours(projectId, employeeId,
                 categoryId, month);
 
-         List<VwProvisioningHoursDTO> provisioningHoursModels = provisioningHoursService.findByFilter(provisioningHoursMouth);
+         List<ProvisioningHoursDTO> provisioningHoursModels = provisioningHoursService.findByFilter(provisioningHoursMouth);
 
          return provisioningHoursModels.isEmpty() ? ResponseEntity.status(HttpStatus.NO_CONTENT).build() :
                  ResponseEntity.status(HttpStatus.OK).body(provisioningHoursModels);

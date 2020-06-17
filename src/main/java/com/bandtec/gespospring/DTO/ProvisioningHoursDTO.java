@@ -11,7 +11,7 @@ import java.util.Date;
 
 @Getter
 @Setter
-public class VwProvisioningHoursDTO {
+public class ProvisioningHoursDTO {
 
     private Integer id;
     private Integer amountHours;
@@ -22,7 +22,7 @@ public class VwProvisioningHoursDTO {
     private Project project;
 
 
-    public VwProvisioningHoursDTO(VwProvisioningHours vwProvisioningHours) {
+    public ProvisioningHoursDTO(VwProvisioningHours vwProvisioningHours) {
         this.employee = new Employee();
         this.category = new Category();
         this.project = new Project();
