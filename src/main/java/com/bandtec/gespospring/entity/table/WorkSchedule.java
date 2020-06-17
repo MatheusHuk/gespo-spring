@@ -1,12 +1,9 @@
 package com.bandtec.gespospring.entity.table;
 
-import com.bandtec.gespospring.entity.AbstractModel;
 import lombok.*;
+import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -17,7 +14,18 @@ import java.util.Date;
 @AllArgsConstructor
 @Entity
 @Table(name = "WORK_SCHEDULE")
-public class WorkSchedule extends AbstractModel {
+public class WorkSchedule {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date creationDate;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @UpdateTimestamp
+    private Date lastUpdateDate;
 
     private Double amountHours;
     private String dsWork;
