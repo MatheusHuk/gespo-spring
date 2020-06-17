@@ -102,7 +102,7 @@ public class EmployeeController {
                 ResponseEntity.status(HttpStatus.OK).body(employeeDTOList);
     }
 
-    @GetMapping("/distinct-project")
+    @GetMapping("/project-is-not")
     public ResponseEntity findDistinctByProjects(
             @RequestParam Integer projectId
     ) {
