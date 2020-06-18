@@ -1,8 +1,8 @@
 package com.bandtec.gespospring.service.Employee;
 
-import com.bandtec.gespospring.DTO.EmployeeDTO;
+import com.bandtec.gespospring.DTO.response.EmployeeDTO;
 import com.bandtec.gespospring.entity.table.Employee;
-import com.bandtec.gespospring.DTO.EmployeeLoginDTO;
+import com.bandtec.gespospring.DTO.response.EmployeeLoginDTO;
 
 import java.util.List;
 

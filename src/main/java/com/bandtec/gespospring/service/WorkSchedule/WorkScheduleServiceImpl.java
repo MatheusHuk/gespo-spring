@@ -1,6 +1,6 @@
 package com.bandtec.gespospring.service.WorkSchedule;
 
-import com.bandtec.gespospring.DTO.update.WorkScheduleUpdateDTO;
+import com.bandtec.gespospring.DTO.request.WorkScheduleUpdateDTO;
 import com.bandtec.gespospring.entity.table.Project;
 import com.bandtec.gespospring.entity.table.WorkSchedule;
 import com.bandtec.gespospring.repository.WorkScheduleRepository;

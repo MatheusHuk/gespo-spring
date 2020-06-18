@@ -1,6 +1,7 @@
 package com.bandtec.gespospring.service.Project;
 
-import com.bandtec.gespospring.DTO.update.ProjectUpdateDTO;
+import com.bandtec.gespospring.DTO.request.ProjectDTO;
+import com.bandtec.gespospring.DTO.request.ProjectUpdateDTO;
 import com.bandtec.gespospring.entity.table.Employee;
 import com.bandtec.gespospring.entity.table.Project;
 import com.bandtec.gespospring.repository.EmployeeRepository;
@@ -22,8 +23,10 @@ public class ProjectServiceImpl implements ProjectService{
     private EmployeeRepository employeeRepository;
 
     @Override
-    public void save(List<Project> projects) {
-        projectRepository.saveAll(projects);
+    public void save(ProjectDTO project) {
+        Project newProject = new Project(project);
+
+        projectRepository.save(newProject);
     }
 
     @Override

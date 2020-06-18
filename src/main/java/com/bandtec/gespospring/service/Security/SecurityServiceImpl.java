@@ -1,6 +1,6 @@
 package com.bandtec.gespospring.service.Security;
 
-import com.bandtec.gespospring.DTO.EmployeeLoginDTO;
+import com.bandtec.gespospring.DTO.response.EmployeeLoginDTO;
 import com.bandtec.gespospring.service.Employee.EmployeeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
