@@ -1,5 +1,6 @@
 package com.bandtec.gespospring.controller;
 
+import com.bandtec.gespospring.DTO.update.ProjectUpdateDTO;
 import com.bandtec.gespospring.entity.table.Project;
 import com.bandtec.gespospring.entity.view.VwSimpleProject;
 import com.bandtec.gespospring.service.Project.ProjectService;
@@ -42,7 +43,7 @@ public class ProjectController {
 
     @PutMapping
     public ResponseEntity update(
-           @RequestBody Project project
+           @RequestBody ProjectUpdateDTO project
     ) {
         return projectService.update(project) ? ResponseEntity.status(HttpStatus.OK).build() :
                 ResponseEntity.status(HttpStatus.NOT_FOUND).build();
