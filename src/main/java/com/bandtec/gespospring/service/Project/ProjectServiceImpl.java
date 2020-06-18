@@ -1,8 +1,8 @@
 package com.bandtec.gespospring.service.Project;
 
 import com.bandtec.gespospring.DTO.update.ProjectUpdateDTO;
+import com.bandtec.gespospring.entity.table.Employee;
 import com.bandtec.gespospring.entity.table.Project;
-import com.bandtec.gespospring.entity.view.VwSimpleProject;
 import com.bandtec.gespospring.repository.EmployeeRepository;
 import com.bandtec.gespospring.repository.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Set;
 
 @Transactional
 @Service
@@ -55,20 +54,19 @@ public class ProjectServiceImpl implements ProjectService{
     }
 
     @Override
-    public Set<VwSimpleProject> findByEmployee(Integer id) {
-        return employeeRepository.findById(id).map(employee -> projectRepository.findByEmployees(id))
-                .orElse(null);
+    public List<Project> findByEmployee(Integer id) {
+        Employee employee = new Employee();
+        employee.setId(id);
+
+        return projectRepository.findByEmployees(employee);
     }
 
     @Override
     public Boolean addResourceAllocation(Integer employeeId, Integer projectId) {
-        projectRepository.findById(projectId).map(project -> {
-            employeeRepository.findById(employeeId).map(employee -> {
-                project.getEmployees().add(employee);
-                return true;
-            });
-            return false;
-        });
+        projectRepository.findById(projectId).map(project -> employeeRepository.findById(employeeId).map(employee -> {
+            project.getEmployees().add(employee);
+            return true;
+        }).orElse(false));
         return false;
     }
 
