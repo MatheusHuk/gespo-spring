@@ -63,19 +63,17 @@ public class ProjectServiceImpl implements ProjectService{
 
     @Override
     public Boolean addResourceAllocation(Integer employeeId, Integer projectId) {
-        projectRepository.findById(projectId).map(project -> employeeRepository.findById(employeeId).map(employee -> {
-            project.getEmployees().add(employee);
-            return true;
-        }).orElse(false));
-        return false;
+        return projectRepository.findById(projectId)
+                .map(project -> employeeRepository.findById(employeeId)
+                        .map(employee -> project.getEmployees()
+                                .add(employee)).orElse(false)).orElse(false);
     }
 
     @Override
     public Boolean removeResourceAllocation(Integer employeeId, Integer projectId) {
-        return projectRepository.findById(projectId).map(project ->
-                employeeRepository.findById(employeeId).map(employee ->
-                        project.getEmployees().remove(employee))
-                        .orElse(false))
-                .orElse(false);
+        return projectRepository.findById(projectId)
+                .map(project -> employeeRepository.findById(employeeId)
+                        .map(employee -> project.getEmployees()
+                                .remove(employee)).orElse(false)).orElse(false);
     }
 }
