@@ -1,5 +1,6 @@
 package com.bandtec.gespospring.service.Project;
 
+import com.bandtec.gespospring.DTO.update.ProjectUpdateDTO;
 import com.bandtec.gespospring.entity.table.Project;
 import com.bandtec.gespospring.entity.view.VwSimpleProject;
 import com.bandtec.gespospring.repository.EmployeeRepository;
@@ -33,14 +34,12 @@ public class ProjectServiceImpl implements ProjectService{
     }
 
     @Override
-    public Boolean update(Project project) {
+    public Boolean update(ProjectUpdateDTO project) {
         return projectRepository.findById(project.getId()).map( proj -> {
             proj.setName(project.getName());
             proj.setDsProject(project.getDsProject());
             proj.setManager(project.getManager());
-            proj.setIsDone(project.getIsDone());
             proj.setCostCenter(project.getCostCenter());
-            proj.setEmployees(project.getEmployees());
 
             projectRepository.save(proj);
             return true;
