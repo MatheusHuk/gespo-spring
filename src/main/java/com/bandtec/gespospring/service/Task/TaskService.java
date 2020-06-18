@@ -1,6 +1,6 @@
 package com.bandtec.gespospring.service.Task;
 
-import com.bandtec.gespospring.DTO.update.TaskUpdateDTO;
+import com.bandtec.gespospring.DTO.request.TaskUpdateDTO;
 import com.bandtec.gespospring.entity.table.Task;
 
 import java.util.List;

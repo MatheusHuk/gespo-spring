@@ -1,4 +1,4 @@
-package com.bandtec.gespospring.DTO.update;
+package com.bandtec.gespospring.DTO.request;
 
 import com.bandtec.gespospring.entity.table.Category;
 import lombok.AllArgsConstructor;

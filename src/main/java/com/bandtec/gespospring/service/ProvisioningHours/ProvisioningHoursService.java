@@ -1,9 +1,9 @@
 package com.bandtec.gespospring.service.ProvisioningHours;
 
-import com.bandtec.gespospring.DTO.update.ProvisioningHoursUpdateDTO;
+import com.bandtec.gespospring.DTO.request.ProvisioningHoursUpdateDTO;
 import com.bandtec.gespospring.entity.table.ProvisioningHours;
 import com.bandtec.gespospring.entity.view.VwProvisioningHours;
-import com.bandtec.gespospring.DTO.ProvisioningHoursDTO;
+import com.bandtec.gespospring.DTO.response.ProvisioningHoursDTO;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.bandtec.gespospring.DTO;
+package com.bandtec.gespospring.DTO.response;
 
 import com.bandtec.gespospring.entity.table.Employee;
 import com.bandtec.gespospring.entity.table.Permission;

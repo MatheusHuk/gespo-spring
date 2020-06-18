@@ -1,6 +1,6 @@
 package com.bandtec.gespospring.controller;
 
-import com.bandtec.gespospring.DTO.update.TaskUpdateDTO;
+import com.bandtec.gespospring.DTO.request.TaskUpdateDTO;
 import com.bandtec.gespospring.entity.table.Task;
 import com.bandtec.gespospring.service.Task.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;

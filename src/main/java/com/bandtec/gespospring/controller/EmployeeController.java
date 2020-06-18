@@ -1,8 +1,8 @@
 package com.bandtec.gespospring.controller;
 
-import com.bandtec.gespospring.DTO.EmployeeDTO;
+import com.bandtec.gespospring.DTO.response.EmployeeDTO;
 import com.bandtec.gespospring.entity.table.Employee;
-import com.bandtec.gespospring.DTO.EmployeeLoginDTO;
+import com.bandtec.gespospring.DTO.response.EmployeeLoginDTO;
 import com.bandtec.gespospring.service.Security.SecurityService;
 import com.bandtec.gespospring.service.Employee.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;

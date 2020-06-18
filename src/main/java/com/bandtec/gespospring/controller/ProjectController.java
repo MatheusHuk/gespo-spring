@@ -1,6 +1,7 @@
 package com.bandtec.gespospring.controller;
 
-import com.bandtec.gespospring.DTO.update.ProjectUpdateDTO;
+import com.bandtec.gespospring.DTO.request.ProjectDTO;
+import com.bandtec.gespospring.DTO.request.ProjectUpdateDTO;
 import com.bandtec.gespospring.entity.table.Project;
 import com.bandtec.gespospring.service.Project.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class ProjectController {
 
     @PostMapping
     public ResponseEntity create(
-            @RequestBody List<Project> projects
+            @RequestBody ProjectDTO projects
     ) {
         try {
             projectService.save(projects);
