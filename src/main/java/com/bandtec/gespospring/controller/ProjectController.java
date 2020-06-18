@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Set;
 
@@ -43,7 +44,7 @@ public class ProjectController {
 
     @PutMapping
     public ResponseEntity update(
-           @RequestBody ProjectUpdateDTO project
+           @RequestBody @Valid ProjectUpdateDTO project
     ) {
         return projectService.update(project) ? ResponseEntity.status(HttpStatus.OK).build() :
                 ResponseEntity.status(HttpStatus.NOT_FOUND).build();
