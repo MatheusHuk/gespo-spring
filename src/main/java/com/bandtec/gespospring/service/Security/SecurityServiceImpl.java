@@ -1,6 +1,6 @@
 package com.bandtec.gespospring.service.Security;
 
-import com.bandtec.gespospring.DTO.response.EmployeeLoginDTO;
+import com.bandtec.gespospring.entity.table.Employee;
 import com.bandtec.gespospring.service.Employee.EmployeeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,7 +30,7 @@ public class SecurityServiceImpl implements SecurityService {
             (SecurityServiceImpl.class);
 
     @Override
-    public EmployeeLoginDTO autoLogin(String cpf, String password) {
+    public Employee autoLogin(String cpf, String password) {
         UserDetails userDetails = userDetailsService.loadUserByUsername(cpf);
         UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(userDetails, password, userDetails.getAuthorities());
 
