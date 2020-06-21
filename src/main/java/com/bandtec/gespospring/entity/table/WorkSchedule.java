@@ -4,8 +4,8 @@ import lombok.*;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 @Getter
@@ -20,8 +20,7 @@ public class WorkSchedule {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date creationDate;
+    private LocalDate creationDate;
 
     @Temporal(TemporalType.TIMESTAMP)
     @UpdateTimestamp
@@ -46,13 +45,10 @@ public class WorkSchedule {
         this.project.setId(projectId);
         this.employee.setId(employeeId);
 
-        try {
-            if(date != null) {
-                Date formattedDate = new SimpleDateFormat("yyyy-MM-dd").parse(date);
-                this.setCreationDate(formattedDate);
-            }
-        } catch (ParseException e) {
-            e.printStackTrace();
+        if(date != null) {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            LocalDate formattedDate = LocalDate.parse(date, formatter);
+            this.setCreationDate(formattedDate);
         }
     }
 }
