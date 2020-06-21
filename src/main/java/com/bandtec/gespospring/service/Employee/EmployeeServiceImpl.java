@@ -77,6 +77,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     public List<EmployeeDTO> findByProject(Integer projectId) {
          Project project = new Project();
          project.setId(projectId);
+         project.setIsDone(null);
 
          List<Employee> employees = employeeRepository.findByProjects(project);
          List<EmployeeDTO> employeeDTOList = new ArrayList<>();
@@ -115,8 +116,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     public List<Employee> findDistinctByProjects(Integer projectId) {
         Project project = new Project();
         project.setId(projectId);
+        project.setIsDone(null);
 
-        return employeeRepository.findByProjectsIsNot(project);
+        return employeeRepository.findEmployeeByProjectsIsNullOrProjectsIsNot(project);
     }
 
     @Override
