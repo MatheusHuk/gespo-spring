@@ -40,11 +40,6 @@ class ProjectServiceImplTest {
 
     private Project project = new Project();
 
-    @BeforeEach
-    public void setUp() {
-        MockitoAnnotations.initMocks(this);
-    }
-
     @Test
     void testConfigService() {
         assertTrue(this.serviceClass.isAnnotationPresent(Service.class));

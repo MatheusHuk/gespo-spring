@@ -65,7 +65,7 @@ class EmployeeServiceImplTest {
     @Test
     void findByIdWhenEmployeeNotFound() {
         this.employee.setId(1);
-        Mockito.when(this.employeeRepository.findById(1)).thenReturn(Optional.of(this.employee));
+        Mockito.when(this.employeeRepository.findById(1)).thenReturn(Optional.empty());
 
         assertNull(this.employeeService.findById(1));
     }
