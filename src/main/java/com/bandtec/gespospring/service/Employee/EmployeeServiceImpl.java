@@ -3,7 +3,6 @@ package com.bandtec.gespospring.service.Employee;
 import com.bandtec.gespospring.DTO.response.EmployeeDTO;
 import com.bandtec.gespospring.entity.table.Category;
 import com.bandtec.gespospring.entity.table.Employee;
-import com.bandtec.gespospring.DTO.response.EmployeeLoginDTO;
 import com.bandtec.gespospring.entity.table.Project;
 import com.bandtec.gespospring.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,8 +33,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public EmployeeLoginDTO findByCpf(String cpf) {
-        return employeeRepository.findByCpdScoped(cpf);
+    public Employee findByCpf(String cpf) {
+        return employeeRepository.findByCpf(cpf);
     }
 
     @Override
