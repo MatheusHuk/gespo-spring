@@ -32,7 +32,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .cors().and()
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/resources/**", "/user/registration", "/user/login")
+                .antMatchers("/resources/**", "/user/registration", "/user/login", "/work-schedules/filter")
                 .permitAll()
                 .anyRequest().authenticated()
                 .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/user/logout"));
