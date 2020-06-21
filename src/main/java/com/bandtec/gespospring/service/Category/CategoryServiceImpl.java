@@ -3,7 +3,6 @@ package com.bandtec.gespospring.service.Category;
 import com.bandtec.gespospring.entity.table.Category;
 import com.bandtec.gespospring.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,13 +10,13 @@ import java.util.List;
 
 @Transactional
 @Service
-public class CategoryServiceImpl implements CategoryService{
+public class CategoryServiceImpl implements CategoryService {
 
     @Autowired
     private CategoryRepository categoryRepository;
 
     @Override
-    public void save(List<Category> categories){
+    public void save(List<Category> categories) {
         categoryRepository.saveAll(categories);
     }
 
@@ -40,7 +39,7 @@ public class CategoryServiceImpl implements CategoryService{
     @Override
     public Boolean delete(Integer id) {
         return categoryRepository.findById(id).map(cat -> {
-            categoryRepository.deleteById(id);
+            categoryRepository.delete(cat);
             return true;
         }).orElse(false);
     }

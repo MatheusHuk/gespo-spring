@@ -16,7 +16,7 @@ import java.util.List;
 
 @Transactional
 @Service
-public class ProvisioningHoursServiceImpl implements ProvisioningHoursService{
+public class ProvisioningHoursServiceImpl implements ProvisioningHoursService {
 
     @Autowired
     private ProvisioningHoursRepository provisioningHoursRepository;
@@ -37,7 +37,7 @@ public class ProvisioningHoursServiceImpl implements ProvisioningHoursService{
 
     @Override
     public Boolean update(ProvisioningHoursUpdateDTO provisioningHours) {
-        return provisioningHoursRepository.findById(provisioningHours.getId()).map( hours -> {
+        return provisioningHoursRepository.findById(provisioningHours.getId()).map(hours -> {
             hours.setCreationDate(provisioningHours.getCreationDate());
             hours.setAmountHours(provisioningHours.getAmountHours());
             hours.setEmployee(provisioningHours.getEmployee());
@@ -50,8 +50,8 @@ public class ProvisioningHoursServiceImpl implements ProvisioningHoursService{
 
     @Override
     public Boolean delete(Integer id) {
-        return provisioningHoursRepository.findById(id).map( hours -> {
-            provisioningHoursRepository.deleteById(id);
+        return provisioningHoursRepository.findById(id).map(hours -> {
+            provisioningHoursRepository.delete(hours);
             return true;
         }).orElse(false);
     }

@@ -14,7 +14,7 @@ import java.util.List;
 
 @Transactional
 @Service
-public class ProjectServiceImpl implements ProjectService{
+public class ProjectServiceImpl implements ProjectService {
 
     @Autowired
     private ProjectRepository projectRepository;
@@ -37,7 +37,7 @@ public class ProjectServiceImpl implements ProjectService{
 
     @Override
     public Boolean update(ProjectUpdateDTO project) {
-        return projectRepository.findById(project.getId()).map( proj -> {
+        return projectRepository.findById(project.getId()).map(proj -> {
             proj.setName(project.getName());
             proj.setDsProject(project.getDsProject());
             proj.setManager(project.getManager());
@@ -50,8 +50,8 @@ public class ProjectServiceImpl implements ProjectService{
 
     @Override
     public Boolean delete(Integer id) {
-        return projectRepository.findById(id).map( project -> {
-            projectRepository.deleteById(id);
+        return projectRepository.findById(id).map(project -> {
+            projectRepository.delete(project);
             return true;
         }).orElse(false);
     }
