@@ -16,7 +16,7 @@ public class CostCenterServiceImpl implements CostCenterService {
     private CostCenterRepository costCenterRepository;
 
     @Override
-    public void save(List<CostCenter> costCenters){
+    public void save(List<CostCenter> costCenters) {
         costCenterRepository.saveAll(costCenters);
     }
 
@@ -40,7 +40,7 @@ public class CostCenterServiceImpl implements CostCenterService {
     @Override
     public Boolean delete(Integer id) {
         return costCenterRepository.findById(id).map(cost -> {
-            costCenterRepository.deleteById(id);
+            costCenterRepository.delete(cost);
             return true;
         }).orElse(false);
     }

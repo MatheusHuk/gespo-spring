@@ -28,7 +28,7 @@ public class PermissionServiceImpl implements PermissionService {
 
     @Override
     public Boolean update(Permission permission) {
-        return permissionRepository.findById(permission.getId()).map( perm -> {
+        return permissionRepository.findById(permission.getId()).map(perm -> {
             perm.setDsPermission(permission.getDsPermission());
             return true;
         }).orElse(false);
@@ -36,7 +36,7 @@ public class PermissionServiceImpl implements PermissionService {
 
     @Override
     public Boolean delete(Integer id) {
-        return permissionRepository.findById(id).map( perm -> {
+        return permissionRepository.findById(id).map(perm -> {
             permissionRepository.delete(perm);
             return true;
         }).orElse(false);

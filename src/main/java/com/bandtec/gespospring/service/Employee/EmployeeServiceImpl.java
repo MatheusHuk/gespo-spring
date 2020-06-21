@@ -68,23 +68,23 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public Boolean delete(Integer id) {
         return employeeRepository.findById(id).map(emp -> {
-            employeeRepository.deleteById(id);
+            employeeRepository.delete(emp);
             return true;
         }).orElse(false);
     }
 
     @Override
     public List<EmployeeDTO> findByProject(Integer projectId) {
-         Project project = new Project();
-         project.setId(projectId);
-         project.setIsDone(null);
+        Project project = new Project();
+        project.setId(projectId);
+        project.setIsDone(null);
 
-         List<Employee> employees = employeeRepository.findByProjects(project);
-         List<EmployeeDTO> employeeDTOList = new ArrayList<>();
+        List<Employee> employees = employeeRepository.findByProjects(project);
+        List<EmployeeDTO> employeeDTOList = new ArrayList<>();
 
-         if(employees.isEmpty()){
-             return employeeDTOList;
-         }
+        if (employees.isEmpty()) {
+            return employeeDTOList;
+        }
 
         for (Employee employee : employees) {
             employeeDTOList.add(new EmployeeDTO(employee));
@@ -101,7 +101,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         List<Employee> employees = employeeRepository.findByCategory(category);
         List<EmployeeDTO> employeeDTOList = new ArrayList<>();
 
-        if(employees.isEmpty()){
+        if (employees.isEmpty()) {
             return employeeDTOList;
         }
 
