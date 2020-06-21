@@ -21,7 +21,7 @@ public class ProjectController {
 
     @PostMapping
     public ResponseEntity create(
-            @RequestBody ProjectDTO projects
+            @RequestBody @Valid ProjectDTO projects
     ) {
         try {
             projectService.save(projects);

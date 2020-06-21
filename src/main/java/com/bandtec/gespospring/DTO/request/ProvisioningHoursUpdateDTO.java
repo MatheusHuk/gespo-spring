@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.validation.constraints.NotNull;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -15,7 +15,7 @@ public class ProvisioningHoursUpdateDTO {
     private Integer id;
 
     @NotNull
-    private Date creationDate;
+    private LocalDate creationDate;
 
     @NotNull
     private Double amountHours;

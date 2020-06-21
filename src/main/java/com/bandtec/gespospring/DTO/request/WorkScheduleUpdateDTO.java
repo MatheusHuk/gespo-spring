@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.validation.constraints.NotNull;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -24,6 +24,6 @@ public class WorkScheduleUpdateDTO {
     @NotNull
     private Project project;
     @NotNull
-    private Date creationDate;
+    private LocalDate creationDate;
 
 }
