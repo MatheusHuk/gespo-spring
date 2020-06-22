@@ -28,7 +28,9 @@ public class VwProjectIsNot implements Serializable {
     private Double hourValue;
     private Date dtBirth;
     private Integer fkCategory;
+    private String dsCategory;
     private Integer fkTeam;
+    private String teamName;
     private Integer fkPermission;
     private Date creationDate;
     private Date lastUpdateDate;
