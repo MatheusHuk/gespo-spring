@@ -50,7 +50,9 @@ public class Employee extends AbstractModel {
         this.hourValue = vwProjectIsNot.getHourValue();
         this.category = new Category();
         this.category.setId(vwProjectIsNot.getFkCategory());
+        this.category.setDsCategory(vwProjectIsNot.getDsCategory());
         this.team = new Team();
+        this.team.setName(vwProjectIsNot.getTeamName());
         this.team.setId(vwProjectIsNot.getFkTeam());
         this.permission = new Permission();
         this.permission.setId(vwProjectIsNot.getFkPermission());
