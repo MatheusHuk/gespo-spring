@@ -2,6 +2,7 @@ package com.bandtec.gespospring.entity.table;
 
 
 import com.bandtec.gespospring.entity.AbstractModel;
+import com.bandtec.gespospring.entity.view.VwProjectIsNot;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
@@ -42,4 +43,17 @@ public class Employee extends AbstractModel {
     @JsonIgnore
     List<Project> projects;
 
+    public Employee(VwProjectIsNot vwProjectIsNot) {
+        this.setId(vwProjectIsNot.getId());
+        this.name = vwProjectIsNot.getName();
+        this.email = vwProjectIsNot.getEmail();
+        this.hourValue = vwProjectIsNot.getHourValue();
+        this.category = new Category();
+        this.category.setId(vwProjectIsNot.getFkCategory());
+        this.team = new Team();
+        this.team.setId(vwProjectIsNot.getFkTeam());
+        this.permission = new Permission();
+        this.permission.setId(vwProjectIsNot.getFkPermission());
+        this.office = vwProjectIsNot.getOffice();
+    }
 }

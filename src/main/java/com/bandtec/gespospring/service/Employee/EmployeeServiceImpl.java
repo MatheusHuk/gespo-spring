@@ -4,7 +4,9 @@ import com.bandtec.gespospring.DTO.response.EmployeeDTO;
 import com.bandtec.gespospring.entity.table.Category;
 import com.bandtec.gespospring.entity.table.Employee;
 import com.bandtec.gespospring.entity.table.Project;
+import com.bandtec.gespospring.entity.view.VwProjectIsNot;
 import com.bandtec.gespospring.repository.EmployeeRepository;
+import com.bandtec.gespospring.repository.VwProjectIsNotRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -19,6 +21,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Autowired
     private EmployeeRepository employeeRepository;
+
+    @Autowired
+    private VwProjectIsNotRepository vwProjectIsNotRepository;
 
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -113,11 +118,21 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public List<Employee> findDistinctByProjects(Integer projectId) {
-        Project project = new Project();
-        project.setId(projectId);
-        project.setIsDone(null);
+        String projectIdString = String.valueOf(projectId);
 
-        return employeeRepository.findEmployeeByProjectsIsNullOrProjectsIsNot(project);
+        List<VwProjectIsNot> vwProjectIsNots =
+                vwProjectIsNotRepository.findAllByProjectIdsIsNotContainingOrProjectIdsIsNull(projectIdString);
+        List<Employee> employees = new ArrayList<>();
+
+        if(vwProjectIsNots.isEmpty()){
+            return employees;
+        }
+
+        for (VwProjectIsNot vwProjectIsNot : vwProjectIsNots) {
+            employees.add(new Employee(vwProjectIsNot));
+        }
+
+        return employees;
     }
 
     @Override
