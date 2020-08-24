@@ -61,7 +61,6 @@ public class EmployeeServiceImpl implements EmployeeService {
             emp.setProjects(employee.getProjects());
             emp.setTeam(employee.getTeam());
             emp.setCategory(employee.getCategory());
-            emp.setPermission(employee.getPermission());
 
             employeeRepository.save(emp);
 

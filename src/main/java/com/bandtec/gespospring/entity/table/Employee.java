@@ -22,7 +22,6 @@ public class Employee extends AbstractModel {
     private String password;
     private String email;
     private Double hourValue;
-    private String office;
 
     @Temporal(TemporalType.DATE)
     private Date dtBirth;
@@ -35,13 +34,13 @@ public class Employee extends AbstractModel {
     @JoinColumn(name = "FK_CATEGORY")
     private Category category;
 
-    @ManyToOne
-    @JoinColumn(name = "FK_PERMISSION")
-    private Permission permission;
-
     @ManyToMany(mappedBy = "employees")
     @JsonIgnore
     List<Project> projects;
+
+    @ManyToOne
+    @JoinColumn(name = "FK_OFFICE")
+    private Office office;
 
     public Employee(VwProjectIsNot vwProjectIsNot) {
         this.setId(vwProjectIsNot.getId());
@@ -54,8 +53,6 @@ public class Employee extends AbstractModel {
         this.team = new Team();
         this.team.setName(vwProjectIsNot.getTeamName());
         this.team.setId(vwProjectIsNot.getFkTeam());
-        this.permission = new Permission();
-        this.permission.setId(vwProjectIsNot.getFkPermission());
-        this.office = vwProjectIsNot.getOffice();
+        this.office.setId(vwProjectIsNot.getFkOffice());
     }
 }

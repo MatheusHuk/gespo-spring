@@ -34,6 +34,6 @@ public class VwProjectIsNot implements Serializable {
     private Integer fkPermission;
     private Date creationDate;
     private Date lastUpdateDate;
-    private String office;
+    private Integer fkOffice;
     private String projectIds;
 }

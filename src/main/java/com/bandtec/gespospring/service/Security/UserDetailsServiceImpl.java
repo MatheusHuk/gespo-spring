@@ -29,7 +29,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         if (employee == null) throw new UsernameNotFoundException("Usuário não encontrado, cpf: "+cpf);
 
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-        grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_" + employee.getPermission().getDsPermission()));
+        grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_" + employee.getOffice().getPermission().getDsPermission()));
         User user = new User(employee.getCpf(), employee.getPassword(), grantedAuthorities);
 
         return user;
