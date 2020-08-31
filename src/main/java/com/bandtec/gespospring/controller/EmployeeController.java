@@ -110,5 +110,13 @@ public class EmployeeController {
         return employees.isEmpty() ? ResponseEntity.status(HttpStatus.NO_CONTENT).build() :
                 ResponseEntity.status(HttpStatus.OK).body(employees);
     }
+
+    @GetMapping("/manager")
+    public ResponseEntity findAllManagers(){
+        List<Employee> managers = employeeService.findAllManagers();
+
+        return managers.isEmpty() ? ResponseEntity.status(HttpStatus.NO_CONTENT).build() :
+                ResponseEntity.status(HttpStatus.OK).body(managers);
+    }
 }
 

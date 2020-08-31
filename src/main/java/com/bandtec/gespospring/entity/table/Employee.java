@@ -34,9 +34,12 @@ public class Employee extends AbstractModel {
     @JoinColumn(name = "FK_CATEGORY")
     private Category category;
 
-    @ManyToMany(mappedBy = "employees")
+    @ManyToMany(fetch = FetchType.LAZY)
     @JsonIgnore
-    List<Project> projects;
+    @JoinTable(name = "EMPLOYEES_PROJECTS",
+            joinColumns = @JoinColumn(name = "FK_EMPLOYEE"),
+            inverseJoinColumns = @JoinColumn(name = "FK_PROJECT"))
+    private List<Project> projects;
 
     @ManyToOne
     @JoinColumn(name = "FK_OFFICE")
@@ -53,6 +56,5 @@ public class Employee extends AbstractModel {
         this.team = new Team();
         this.team.setName(vwProjectIsNot.getTeamName());
         this.team.setId(vwProjectIsNot.getFkTeam());
-        this.office.setId(vwProjectIsNot.getFkOffice());
     }
 }

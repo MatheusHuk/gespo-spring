@@ -31,7 +31,6 @@ public class VwProjectIsNot implements Serializable {
     private String dsCategory;
     private Integer fkTeam;
     private String teamName;
-    private Integer fkPermission;
     private Date creationDate;
     private Date lastUpdateDate;
     private Integer fkOffice;

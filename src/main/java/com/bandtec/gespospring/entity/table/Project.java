@@ -18,7 +18,6 @@ public class Project extends AbstractModel {
 
     private String name;
     private String dsProject;
-    private String manager;
     private Integer isDone = 0;
 
     @ManyToOne
@@ -26,16 +25,16 @@ public class Project extends AbstractModel {
     private CostCenter costCenter;
 
     @JsonIgnore
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "EMPLOYEES_PROJECTS",
-            joinColumns = @JoinColumn(name = "FK_PROJECT"),
-            inverseJoinColumns = @JoinColumn(name = "FK_EMPLOYEE"))
+    @ManyToMany(mappedBy = "projects")
     private List<Employee> employees;
+
+    @ManyToOne
+    @JoinColumn(name = "FK_MANAGER")
+    private Employee manager;
 
     public Project(ProjectDTO projectDTO) {
         this.name = projectDTO.getName();
         this.dsProject = projectDTO.getDsProject();
-        this.manager = projectDTO.getManager();
         this.costCenter = projectDTO.getCostCenter();
         this.employees = projectDTO.getEmployees();
     }

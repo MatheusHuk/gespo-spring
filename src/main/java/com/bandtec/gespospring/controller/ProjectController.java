@@ -72,6 +72,7 @@ public class ProjectController {
             @RequestParam Integer employeeId,
             @RequestParam Integer projectId
     ) {
+        System.out.println("REMOVE ALLOCATION: "+employeeId);
         return projectService.removeResourceAllocation(employeeId, projectId) ?
                 ResponseEntity.status(HttpStatus.OK).build() : ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }

@@ -138,4 +138,6 @@ public class EmployeeServiceImpl implements EmployeeService {
     public List<Employee> findAll() {
         return employeeRepository.findAll();
     }
+
+    public List<Employee> findAllManagers() { return employeeRepository.findAllManagers(); }
 }

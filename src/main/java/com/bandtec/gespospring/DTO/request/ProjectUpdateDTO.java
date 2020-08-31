@@ -1,6 +1,7 @@
 package com.bandtec.gespospring.DTO.request;
 
 import com.bandtec.gespospring.entity.table.CostCenter;
+import com.bandtec.gespospring.entity.table.Employee;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,9 +21,8 @@ public class ProjectUpdateDTO {
     @NotNull
     private CostCenter costCenter;
 
-    @NotBlank
     @NotNull
-    private String manager;
+    private Employee manager;
 
     @NotBlank
     @NotNull
