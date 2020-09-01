@@ -25,7 +25,10 @@ public class Project extends AbstractModel {
     private CostCenter costCenter;
 
     @JsonIgnore
-    @ManyToMany(mappedBy = "projects")
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "EMPLOYEES_PROJECTS",
+            joinColumns = @JoinColumn(name = "FK_PROJECT"),
+            inverseJoinColumns = @JoinColumn(name = "FK_EMPLOYEE"))
     private List<Employee> employees;
 
     @ManyToOne
