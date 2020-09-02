@@ -6,10 +6,9 @@ import com.bandtec.gespospring.repository.PermissionRepository;
 import com.bandtec.gespospring.service.Office.OfficeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -36,5 +35,43 @@ public class OfficeController {
 
         return permissions.size() > 0 ? ResponseEntity.ok(permissions) :
                 ResponseEntity.noContent().build();
+    }
+
+    @PostMapping
+    public ResponseEntity create(
+            @RequestBody Office office
+    ){
+        try{
+            List<Office> offices = new ArrayList();
+            offices.add(office);
+            this.service.save(offices);
+            return ResponseEntity.created(null).build();
+        }catch(Exception e){
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
+    @PutMapping
+    public ResponseEntity update(
+            @RequestBody Office office
+    ){
+        try{
+            this.service.update(office);
+            return ResponseEntity.ok().build();
+        }catch(Exception e){
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
+    @DeleteMapping
+    public ResponseEntity delete(
+            @RequestParam Integer id
+    ){
+        try{
+            this.service.delete(id);
+            return ResponseEntity.ok().build();
+        }catch(Exception e){
+            return ResponseEntity.notFound().build();
+        }
     }
 }
